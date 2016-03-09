@@ -51,12 +51,11 @@ xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLS
   </dependency>
 
   <!-- Needed for PDF View -->
-  <dependency>
+    <dependency>
     <groupId>com.lowagie</groupId>
     <artifactId>itext</artifactId>
-    <version>4.2.1</version>
+    <version>4.2.0</version>
   </dependency>
-
   <!-- Needed for XLS View -->
   <dependency>
     <groupId>org.apache.poi</groupId>

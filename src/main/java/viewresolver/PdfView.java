@@ -1,30 +1,27 @@
 package viewresolver;
-import java.awt.Color;
-import java.util.Map;
+
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import org.springframework.web.servlet.view.document.AbstractPdfView;
+
+import model.Pizza;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
-import org.springframework.web.servlet.view.document.AbstractPdfView;
-
-import com.lowagie.text.Document;
-import com.lowagie.text.Element;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfWriter;
-import model.Pizza;
-
-public class PdfView  extends AbstractPdfView{
+public class PdfView extends AbstractPdfView{
     @Override
-    protected void buildPdfDocument(Map<String, Object> model,
-                                    Document document, PdfWriter writer, HttpServletRequest request,
-                                    HttpServletResponse response) throws Exception {
-
+    protected void buildPdfDocument(Map<String, Object> model, com.itextpdf.text.Document document, com.itextpdf.text.pdf.PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
         Pizza pizza = (Pizza) model.get("pizza");
 
         PdfPTable table = new PdfPTable(3);
         table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
         table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-        table.getDefaultCell().setBackgroundColor(Color.lightGray);
+        table.getDefaultCell().setBackgroundColor(BaseColor.LIGHT_GRAY);
 
         table.addCell("Name");
         table.addCell("Flavor");
@@ -40,6 +37,5 @@ public class PdfView  extends AbstractPdfView{
         }
         table.addCell(toppings.toString());
         document.add(table);
-
     }
 }

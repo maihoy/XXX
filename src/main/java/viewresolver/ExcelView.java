@@ -10,13 +10,16 @@ import org.apache.poi.ss.usermodel.*;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 import model.Pizza;
+
 public class ExcelView extends AbstractExcelView{
     @Override
-    protected void buildExcelDocument(Map<String, Object> map, HSSFWorkbook hssfWorkbook, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-        Pizza pizza = (Pizza) model.get("pizza");
+    protected void buildExcelDocument(Map<String, Object> map, HSSFWorkbook hssfWorkbook,
+                                      HttpServletRequest httpServletRequest,
+                                      HttpServletResponse httpServletResponse) throws Exception {
+        Pizza pizza= (Pizza) map.get("pizza");
 
-        Sheet sheet = workbook.createSheet("sheet 1");
-        CellStyle style = workbook.createCellStyle();
+        Sheet sheet = hssfWorkbook.createSheet("sheet 1");
+        CellStyle style = hssfWorkbook.createCellStyle();
         style.setFillForegroundColor(IndexedColors.GREY_40_PERCENT.index);
         style.setFillPattern(CellStyle.SOLID_FOREGROUND);
         style.setAlignment(CellStyle.ALIGN_CENTER);
