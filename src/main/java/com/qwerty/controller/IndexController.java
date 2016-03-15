@@ -1,4 +1,4 @@
-package controller;
+package com.qwerty.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import model.Pizza;
+import com.qwerty.model.Pizza;
 
 @Controller
 
 public class IndexController {
 
-    @RequestMapping(value="/pizzavalley/{pizzaName}", method = RequestMethod.GET)
+    @RequestMapping(value="pizzavalley/{pizzaName}", method = RequestMethod.GET)
     public String getPizza(@PathVariable String pizzaName, ModelMap model) {
 
         Pizza pizza = new Pizza(pizzaName);

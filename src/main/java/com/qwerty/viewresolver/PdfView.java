@@ -1,4 +1,4 @@
-package viewresolver;
+package com.qwerty.viewresolver;
 
 import java.awt.Color;
 import java.util.Map;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.document.AbstractPdfView;
 import com.lowagie.text.Element;
 import com.lowagie.text.pdf.PdfPTable;
 
-import model.Pizza;
+import com.qwerty.model.Pizza;
 
 public class PdfView extends AbstractPdfView{
     @Override

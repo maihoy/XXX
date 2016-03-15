@@ -1,4 +1,4 @@
-package configuration;
+package com.qwerty.configuration;
 
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

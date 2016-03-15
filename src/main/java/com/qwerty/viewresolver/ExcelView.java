@@ -1,4 +1,4 @@
-package viewresolver;
+package com.qwerty.viewresolver;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
-import model.Pizza;
+import com.qwerty.model.Pizza;
 
 public class ExcelView extends AbstractExcelView{
     @Override

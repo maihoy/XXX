@@ -1,4 +1,4 @@
-package configuration;
+package com.qwerty.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,15 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import model.Pizza;
-import viewresolver.ExcelViewResolver;
-import viewresolver.JsonViewResolver;
-import viewresolver.Jaxb2MarshallingXmlViewResolver;
-import viewresolver.PdfViewResolver;
+import com.qwerty.model.Pizza;
+import com.qwerty.viewresolver.ExcelViewResolver;
+import com.qwerty.viewresolver.JsonViewResolver;
+import com.qwerty.viewresolver.Jaxb2MarshallingXmlViewResolver;
+import com.qwerty.viewresolver.PdfViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@ComponentScan(basePackages = "com.qwerty")
 public class AppConfig extends WebMvcConfigurerAdapter{
 
     /*

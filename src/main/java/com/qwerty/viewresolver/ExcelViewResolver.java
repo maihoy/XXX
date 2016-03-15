@@ -1,4 +1,4 @@
-package viewresolver;
+package com.qwerty.viewresolver;
 
 import java.util.Locale;
 
