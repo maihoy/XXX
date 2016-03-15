@@ -1,4 +1,4 @@
-package service;
+package com.qwerty.service;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import model.User;
+import com.qwerty.model.User;
 
 @Service("userService")
 @Transactional

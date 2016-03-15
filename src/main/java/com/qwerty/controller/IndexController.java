@@ -1,4 +1,4 @@
-package controller;
+package com.qwerty.controller;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import model.User;
-import service.UserService;
+import com.qwerty.model.User;
+import com.qwerty.service.UserService;
 
 @RestController
 public class IndexController {

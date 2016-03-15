@@ -1,6 +1,6 @@
-package service;
+package com.qwerty.service;
 
-import model.User;
+import com.qwerty.model.User;
 
 import java.util.List;
 
