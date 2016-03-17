@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.qwerty"/>
+
+    <mvc:default-servlet-handler/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+            <bean
+            class="com.qwerty.viewresolver.Jaxb2MarshallingXmlViewResolver" name="xmlViewResolver" >
+            <constructor-arg>
+                <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+                    <property name="classesToBeBound">
+                        <value>com.qwerty.model.Pizza</value>
+                    </property>
+                </bean>
+            </constructor-arg>
+            </bean>
+            <bean class="com.qwerty.viewresolver.JsonViewResolver" name="jsonViewResolver" />
+            <bean class="com.qwerty.viewresolver.PdfViewResolver" name="pdfViewResolver" />
+            <bean class="com.qwerty.viewresolver.ExcelViewResolver" name="excelViewResolver" />
+
+            <bean id="contentNegotiationManager"
+                  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+            <property name="defaultContentType" value="text/html" />
+            <property name="ignoreAcceptHeader" value="true"/>
+            </bean>
+
+                    <!-- Make this available across all of Spring MVC -->
+            <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
+
+            <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+            <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+            <property name="viewResolvers">
+                <list>
+                    <ref bean="xmlViewResolver"/>
+                    <ref bean="jsonViewResolver"/>
+                    <ref bean="pdfViewResolver"/>
+                    <ref bean="excelViewResolver"/>
+                </list>
+            </property>
+            </bean>
+
+        </beans>
