@@ -20,7 +20,7 @@ import com.qwerty.service.UserService;
 @RestController
 public class IndexController {
   @Autowired
-  UserService userService;  //Service which will do all data retrieval/manipulation work
+  UserService userService; //Service which will do all data retrieval/manipulation work
 
 
   //-------------------Retrieve All Users--------------------------------------------------------
