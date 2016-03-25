@@ -19,14 +19,14 @@
 <h2>List of Teams</h2>
 <table>
     <tr>
-        <td>name</td><td>shortName</td><td>notes</td><td></td>
+        <td>Name</td><td>Short Name</td><td>Notes</td>
     </tr>
     <c:forEach items="${teams}" var="teams">
         <tr>
             <td>${teams.name}</td>
             <td>${teams.shortName}</td>
             <td>${teams.notes}</td>
-            <td><a href="<c:url value='/edit-${team.id}-team' />">${team.id}</a></td>
+            <td><a href="<c:url value='/edit-${team.id}-team' />">edit</a></td>
             <td><a href="<c:url value='/delete-${team.id}-team' />">delete</a></td>
         </tr>
     </c:forEach>
