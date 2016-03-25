@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Employee Registration Form</title>
+    <title>Team Registration Form</title>
 
     <style>
 
@@ -20,7 +20,7 @@
 
 <h2>Registration Form</h2>
 
-<form:form method="POST" modelAttribute="employee">
+<form:form method="POST" modelAttribute="team">
     <form:input type="hidden" path="id" id="id"/>
     <table>
         <tr>
@@ -30,21 +30,15 @@
         </tr>
 
         <tr>
-            <td><label for="joiningDate">Joining Date: </label> </td>
-            <td><form:input path="joiningDate" id="joiningDate"/></td>
-            <td><form:errors path="joiningDate" cssClass="error"/></td>
+            <td><label for="shortName">Short Name: </label> </td>
+            <td><form:input path="shortName" id="shortName"/></td>
+            <td><form:errors path="shortName" cssClass="error"/></td>
         </tr>
 
         <tr>
-            <td><label for="salary">Salary: </label> </td>
-            <td><form:input path="salary" id="salary"/></td>
-            <td><form:errors path="salary" cssClass="error"/></td>
-        </tr>
-
-        <tr>
-            <td><label for="ssn">SSN: </label> </td>
-            <td><form:input path="ssn" id="ssn"/></td>
-            <td><form:errors path="ssn" cssClass="error"/></td>
+            <td><label for="notes">Notes: </label> </td>
+            <td><form:input path="notes" id="notes"/></td>
+            <td><form:errors path="notes" cssClass="error"/></td>
         </tr>
 
         <tr>
@@ -63,6 +57,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="<c:url value='/list' />">List of All Employees</a>
+Go back to <a href="<c:url value='/list' />">List of All Teams</a>
 </body>
 </html>
