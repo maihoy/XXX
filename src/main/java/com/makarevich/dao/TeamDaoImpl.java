@@ -11,16 +11,14 @@ import org.springframework.stereotype.Repository;
 @Repository("teamDao")
 
 public class TeamDaoImpl extends AbstractDao<Integer, Team> implements TeamDao {
-    public Team findById(int id) {
-        return getByKey(id);
-    }
+    public Team findById(int id) { return getByKey(id); }
 
     public void saveTeam(Team team) {
         persist(team);
     }
 
     public void deleteTeamById(int id) {
-        Query query = getSession().createSQLQuery("delete from Team where id = :id");
+        Query query = getSession().createSQLQuery("delete from TEAM where id = :id");
         query.setInteger("id", id);
         query.executeUpdate();
     }

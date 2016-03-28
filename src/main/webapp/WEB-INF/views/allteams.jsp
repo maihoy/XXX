@@ -4,12 +4,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>University Enrollments</title>
-
     <style>
         tr:first-child{
             font-weight: bold;
             background-color: #C6C9C4;
         }
+        body{
+            background-color: #1e1e1e;
+        }
+
     </style>
 
 </head>
@@ -21,11 +24,11 @@
     <tr>
         <td>Name</td><td>Short Name</td><td>Notes</td>
     </tr>
-    <c:forEach items="${teams}" var="teams">
+    <c:forEach items="${teams}" var="team">
         <tr>
-            <td>${teams.name}</td>
-            <td>${teams.shortName}</td>
-            <td>${teams.notes}</td>
+            <td>${team.name}</td>
+            <td>${team.shortName}</td>
+            <td>${team.notes}</td>
             <td><a href="<c:url value='/edit-${team.id}-team' />">edit</a></td>
             <td><a href="<c:url value='/delete-${team.id}-team' />">delete</a></td>
         </tr>

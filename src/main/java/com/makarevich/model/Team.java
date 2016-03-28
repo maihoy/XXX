@@ -18,11 +18,11 @@ public class Team {
     private String name;
 
     @Size(min=3, max=10)
-    @Column(name = "shortName", nullable = false)
+    @Column(name = "short_name", nullable = true)
     private String shortName;
 
    // @Size(min=0, max=250)
-    @Column(name = "notes", nullable = false)
+    @Column(name = "notes", nullable = true)
     private String notes;
 
 
@@ -42,12 +42,10 @@ public class Team {
         this.name = name;
     }
 
-    public String getShortName() {
-        return shortName;
-    }
+    public String getShortName() {  return shortName;  }
 
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
+    public void setShortName(String short_name) {
+        this.shortName = short_name;
     }
 
     public String getNotes() {

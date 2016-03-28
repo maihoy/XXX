@@ -31,7 +31,7 @@
 
         <tr>
             <td><label for="shortName">Short Name: </label> </td>
-            <td><form:input path="shortName" id="shortName"/></td>
+            <td><form:input path="shortName" id="short_name"/></td>
             <td><form:errors path="shortName" cssClass="error"/></td>
         </tr>
 
