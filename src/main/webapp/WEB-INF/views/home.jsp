@@ -10,7 +10,7 @@
 message : ${success}
 <br/>
 <br/>
-Go back to <a href="<c:url value='/list' />">List of All Teams</a>
+Go back to <a href="<c:url value='/team-list' />">List of All Teams</a>
 
 </body>
 </html>

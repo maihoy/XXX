@@ -29,12 +29,12 @@
             <td>${team.name}</td>
             <td>${team.shortName}</td>
             <td>${team.notes}</td>
-            <td><a href="<c:url value='/edit-${team.id}-team' />">edit</a></td>
-            <td><a href="<c:url value='/delete-${team.id}-team' />">delete</a></td>
+            <td><a href="<c:url value='team/edit-${team.id}-team' />">edit</a></td>
+            <td><a href="<c:url value='team/delete-${team.id}-team' />">delete</a></td>
         </tr>
     </c:forEach>
 </table>
 <br/>
-<a href="<c:url value='/new' />">Add New Team</a>
+<a href="<c:url value='team/new' />">Add New Team</a>
 </body>
 </html>

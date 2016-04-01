@@ -1,6 +1,5 @@
 package com.makarevich.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -19,76 +18,15 @@ import com.makarevich.service.TeamService;
 @RequestMapping("/")
 
 public class IndexController {
+
     @Autowired
     TeamService service;
 
-    @Autowired
-    MessageSource messageSource;
-
-
-    @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/team" }, method = RequestMethod.GET)
     public String listTeams(ModelMap model) {
 
         List<Team> teams = service.findAllTeams();
         model.addAttribute("teams", teams);
-        return "allteams";
-    }
-
-
-    @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
-    public String newTeam(ModelMap model) {
-        Team team = new Team();
-        model.addAttribute("team", team);
-        model.addAttribute("edit", false);
-        return "registration";
-    }
-
-
-    @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String saveTeam(@Valid Team team, BindingResult result,
-                               ModelMap model) {
-
-        if (result.hasErrors()) {
-            return "registration";
-        }
-
-
-        service.saveTeam(team);
-
-        model.addAttribute("success", "Team " + team.getName() + " registered successfully");
-        return "success";
-    }
-
-
-
-    @RequestMapping(value = { "/edit-{id}-team" }, method = RequestMethod.GET)
-    public String editTeam(@PathVariable int id, ModelMap model) {
-        Team team = service.findById(id);
-        model.addAttribute("team", team);
-        model.addAttribute("edit", true);
-        return "registration";
-    }
-
-
-    @RequestMapping(value = { "/edit-{id}-team" }, method = RequestMethod.POST)
-    public String updateTeam(@Valid Team team, BindingResult result,
-                                 ModelMap model, @PathVariable int id) {
-
-        if (result.hasErrors()) {
-            return "registration";
-        }
-
-
-        service.updateTeam(team);
-
-        model.addAttribute("success", "Team " + team.getName()  + " updated successfully");
-        return "success";
-    }
-
-
-    @RequestMapping(value = { "/delete-{id}-team" }, method = RequestMethod.GET)
-    public String deleteTeam(@PathVariable int id) {
-        service.deleteTeamById(id);
-        return "redirect:/list";
+        return "team/list";
     }
 }
