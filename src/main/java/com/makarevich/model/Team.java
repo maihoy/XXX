@@ -10,9 +10,6 @@ import javax.validation.constraints.Size;
 
 public class Team {
 
-   // @ManyToOne(fetch = FetchType.LAZY)
-  //  @JoinColumn(name = "team")
-  //  private Team team;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

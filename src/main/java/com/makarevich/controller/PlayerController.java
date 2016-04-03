@@ -1,5 +1,4 @@
 package com.makarevich.controller;
-/**
 import com.makarevich.model.Player;
 import com.makarevich.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,4 +86,3 @@ public class PlayerController {
     }
 
 }
-**/

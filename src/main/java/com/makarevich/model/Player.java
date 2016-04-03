@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 public class Player {
 
 
+
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
@@ -49,13 +51,9 @@ public class Player {
             this.surname = surname;
         }
 
-        public int getTeam() {
-            return team;
-        }
+        public int getTeam() {   return team;     }
 
-        public void setTeam(int team) {
-            this.team = team;
-        }
+        public void setTeam(int team) {   this.team = team;     }
 
 
 

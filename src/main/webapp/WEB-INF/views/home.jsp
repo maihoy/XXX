@@ -8,8 +8,8 @@
 </head>
 <body>
 <tr>
-    <td>Go to <a href="<c:url value='/team/list' />">List of All Teams</a></td>
-    <td></td>
+    <td><a href="<c:url value='/team/list' />">List of Teams</a></td>
+    <td><a href="<c:url value='/player/list' />">List of Players</a></td>
 </tr>
 
 

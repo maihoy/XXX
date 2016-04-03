@@ -8,9 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by j on 3.4.16.
- */
 @Service("playerService")
 @Transactional
 public class PlayerServiceImpl implements PlayerService{
