@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>List Of Teams</title>
+    <title>List Of Players</title>
     <style>
         tr:first-child{
             font-weight: bold;
@@ -14,27 +14,25 @@
         }
 
     </style>
-
 </head>
-
-
 <body>
-<h2>List of Teams</h2>
+<h2>List of Players</h2>
 <table>
     <tr>
-        <td>Name</td><td>Short Name</td><td>Notes</td>
+        <td>Name</td><td>Surname</td><td>Team</td>
     </tr>
-    <c:forEach items="${teams}" var="team">
+    <c:forEach items="${players}" var="player">
         <tr>
-            <td>${team.name}</td>
-            <td>${team.shortName}</td>
-            <td>${team.notes}</td>
-            <td><a href="<c:url value='team/edit-${team.id}-team' />">edit</a></td>
-            <td><a href="<c:url value='team/delete-${team.id}-team' />">delete</a></td>
+            <td>${player.name}</td>
+            <td>${player.surname}</td>
+            <td>${player.team}</td>
+            <td><a href="<c:url value='player/edit-${player.id}-player' />">edit</a></td>
+            <td><a href="<c:url value='player/delete-${player.id}-player' />">delete</a></td>
         </tr>
     </c:forEach>
 </table>
 <br/>
-<a href="<c:url value='team/new' />">Add New Team</a>
+<a href="<c:url value='player/new' />">Add New Player</a>
+</body>
 </body>
 </html>

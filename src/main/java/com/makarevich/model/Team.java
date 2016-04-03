@@ -7,7 +7,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="TEAM")
+
 public class Team {
+
+   // @ManyToOne(fetch = FetchType.LAZY)
+  //  @JoinColumn(name = "team")
+  //  private Team team;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +22,7 @@ public class Team {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Size(min=3, max=10)
+   // @Size(min=3, max=10)
     @Column(name = "short_name", nullable = true)
     private String shortName;
 

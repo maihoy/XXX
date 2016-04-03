@@ -4,13 +4,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Registration Confirmation Page</title>
+    <title>Home</title>
 </head>
 <body>
-message : ${success}
-<br/>
-<br/>
-Go back to <a href="<c:url value='/team-list' />">List of All Teams</a>
+<tr>
+    <td>Go to <a href="<c:url value='/team/list' />">List of All Teams</a></td>
+    <td></td>
+</tr>
+
 
 </body>
 </html>
