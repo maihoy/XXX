@@ -32,7 +32,7 @@
         </tr>
 
         <tr>
-            <td><label for="team">Notes: </label> </td>
+            <td><label for="team">Team: </label> </td>
             <td><form:input path="team" id="team"/></td>
             <td><form:errors path="team" cssClass="error"/></td>
         </tr>
@@ -53,6 +53,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="<c:url value='/player' />">List of All Players</a>
+Go back to <a href="<c:url value='/player/list' />">List of All Players</a>
 </body>
 </html>

@@ -11,18 +11,17 @@
         }
         body{
             background-color: #ffffff;
-        }
+                }
 
-        .menu-item {
-            font-weight: bold;
-            background-color: #ffffff;
-        }
+                .menu-item {
+                    font-weight: bold;
+                    background-color: #ffffff;
+                }
 
-        .menu-item-selected {
-            font-weight: bold;
-            background-color: #C6C9C4;
-        }
-
+                .menu-item-selected {
+                    font-weight: bold;
+                    background-color: #C6C9C4;
+                }
     </style>
 
 </head>
@@ -30,13 +29,12 @@
 
 <body>
 <table>
-    <tr>
-        <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
-        <td class="menu-item-selected"><a href="<c:url value='/team/list' />">List of Teams</a></td>
-        <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
-    </tr>
-</table>
-
+        <tr>
+            <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
+            <td class="menu-item-selected"><a href="<c:url value='/team/list' />">List of Teams</a></td>
+            <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
+        </tr>
+    </table>
 <h2>List of Teams</h2>
 <table>
     <tr>

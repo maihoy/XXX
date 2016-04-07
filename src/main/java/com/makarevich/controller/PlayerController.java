@@ -28,7 +28,7 @@ public class PlayerController {
 
         List<Player> players = service.findAllPlayers();
         model.addAttribute("players", players);
-        return "/list";
+        return "player/list";
     }
 
 
@@ -37,7 +37,7 @@ public class PlayerController {
         Player player = new Player();
         model.addAttribute("player", player);
         model.addAttribute("edit", false);
-        return "/player/manage";
+        return "player/manage";
     }
 
 
@@ -46,12 +46,12 @@ public class PlayerController {
                            ModelMap model) {
 
         if (result.hasErrors()) {
-            return "/player/manage";
+            return "player/manage";
         }
 
 
         service.savePlayer(player);
-        return "redirect:/player";
+        return "redirect:/player/list";
     }
 
 
@@ -75,14 +75,14 @@ public class PlayerController {
 
 
         service.updatePlayer(player);
-        return "redirect:/player";
+        return "redirect:/player/list";
     }
 
 
     @RequestMapping(value = { "/delete-{id}-player" }, method = RequestMethod.GET)
     public String deletePlayer(@PathVariable int id) {
         service.deletePlayerById(id);
-        return "redirect:/player";
+        return "redirect:/player/list";
     }
 
 }

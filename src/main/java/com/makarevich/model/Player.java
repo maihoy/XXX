@@ -12,6 +12,7 @@ public class Player {
 
 
 
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
@@ -24,9 +25,9 @@ public class Player {
         @Column(name = "surname", nullable = false)
         private String surname;
 
-        // @Size(min=0, max=250)
-        @Column(name = "team", nullable = false)
-        private int team;
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "team")
+        private Team team;
 
 
         public int getId() {
@@ -51,9 +52,9 @@ public class Player {
             this.surname = surname;
         }
 
-        public int getTeam() {   return team;     }
+        public Team getTeam() {   return team;     }
 
-        public void setTeam(int team) {   this.team = team;     }
+        public void setTeam(Team team) {   this.team = team;     }
 
 
 
