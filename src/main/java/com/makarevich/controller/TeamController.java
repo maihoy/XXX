@@ -31,7 +31,7 @@ public class TeamController {
 
         List<Team> teams = service.findAllTeams();
         model.addAttribute("teams", teams);
-        return "/list";
+        return "team/list";
     }
 
 
@@ -40,7 +40,7 @@ public class TeamController {
         Team team = new Team();
         model.addAttribute("team", team);
         model.addAttribute("edit", false);
-        return "/team/manage";
+        return "team/manage";
     }
 
 
@@ -49,12 +49,12 @@ public class TeamController {
                                ModelMap model) {
 
         if (result.hasErrors()) {
-            return "/team/manage";
+            return "team/manage";
         }
 
 
         service.saveTeam(team);
-        return "redirect:/team";
+        return "redirect:/team/list";
     }
 
 
@@ -78,13 +78,13 @@ public class TeamController {
 
 
         service.updateTeam(team);
-        return "redirect:/team";
+        return "redirect:/team/list";
     }
 
 
     @RequestMapping(value = { "/delete-{id}-team" }, method = RequestMethod.GET)
     public String deleteTeam(@PathVariable int id) {
         service.deleteTeamById(id);
-        return "redirect:/team";
+        return "redirect:/team/list";
     }
 }

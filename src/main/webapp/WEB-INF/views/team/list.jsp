@@ -10,7 +10,17 @@
             background-color: #C6C9C4;
         }
         body{
-            background-color: #1e1e1e;
+            background-color: #ffffff;
+        }
+
+        .menu-item {
+            font-weight: bold;
+            background-color: #ffffff;
+        }
+
+        .menu-item-selected {
+            font-weight: bold;
+            background-color: #C6C9C4;
         }
 
     </style>
@@ -19,6 +29,14 @@
 
 
 <body>
+<table>
+    <tr>
+        <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
+        <td class="menu-item-selected"><a href="<c:url value='/team/list' />">List of Teams</a></td>
+        <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
+    </tr>
+</table>
+
 <h2>List of Teams</h2>
 <table>
     <tr>
@@ -29,12 +47,12 @@
             <td>${team.name}</td>
             <td>${team.shortName}</td>
             <td>${team.notes}</td>
-            <td><a href="<c:url value='team/edit-${team.id}-team' />">edit</a></td>
-            <td><a href="<c:url value='team/delete-${team.id}-team' />">delete</a></td>
+            <td><a href="<c:url value='edit-${team.id}-team' />">edit</a></td>
+            <td><a href="<c:url value='delete-${team.id}-team' />">delete</a></td>
         </tr>
     </c:forEach>
 </table>
 <br/>
-<a href="<c:url value='team/new' />">Add New Team</a>
+<a href="<c:url value='new' />">Add New Team</a>
 </body>
 </html>

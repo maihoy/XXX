@@ -57,6 +57,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="<c:url value='/team' />">List of All Teams</a>
+Go back to <a href="<c:url value='/team/list' />">List of All Teams</a>
 </body>
 </html>
