@@ -3,6 +3,8 @@ package com.makarevich.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="PLAYER")
@@ -26,9 +28,13 @@ public class Player {
         private String surname;
 
         @ManyToOne(fetch = FetchType.LAZY)
-        @JoinColumn(name = "team")
-        private Team team;
+       // @JoinColumn(name = "team")
+        @JoinTable(name = "TEAM",
+                    joinColumns = {@JoinColumn(name = "id")},
+                    inverseJoinColumns ={@JoinColumn (name = "team")} )
+       // private Team team;
 
+        private Set<Team> team = new HashSet<Team>();
 
         public int getId() {
             return id;
@@ -52,13 +58,22 @@ public class Player {
             this.surname = surname;
         }
 
-        public Team getTeam() {   return team;     }
+        /**public Team getTeam() {   return team;     }
 
         public void setTeam(Team team) {   this.team = team;     }
 
+**/
+        public  Set<Team> getTeam(){
+            return team;
+        }
+
+        public void setTeam(Set<Team> team) {
+            this.team = team;
+        }
 
 
-        @Override
+
+    @Override
         public boolean equals(Object obj) {
             if (this == obj)
                 return true;

@@ -1,23 +1,27 @@
 package com.makarevich.controller;
 import com.makarevich.model.Player;
+import com.makarevich.model.Team;
 import com.makarevich.service.PlayerService;
+import com.makarevich.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping("/player")
+@SessionAttributes("roles")
 public class PlayerController {
     @Autowired
     PlayerService service;
+
+    @Autowired
+    TeamService teamService;
 
     @Autowired
     MessageSource messageSource;
@@ -85,4 +89,8 @@ public class PlayerController {
         return "redirect:/player/list";
     }
 
+    @ModelAttribute("roles")
+    public  List<Team> initializeProfiles(){
+        return teamService.findAllTeams();
+    }
 }

@@ -32,9 +32,9 @@
         </tr>
 
         <tr>
-            <td><label for="team">Team: </label> </td>
-            <td><form:input path="team" id="team"/></td>
-            <td><form:errors path="team" cssClass="error"/></td>
+            <td>
+                <form:select path="teams" items="${roles}" multiple="false" itemValue="id"/>
+            </td>
         </tr>
 
         <tr>

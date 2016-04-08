@@ -1,22 +1,28 @@
 package com.makarevich.configuration;
 
-/**
- * Created by j on 19.3.16.
- */
+import com.makarevich.converter.RoleConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.makarevich")
-public class AppConfig {
+public class AppConfig extends WebMvcConfigurerAdapter {
+
+    @Autowired
+    RoleConverter roleConverter;
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -25,11 +31,25 @@ public class AppConfig {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
 }
+    /**
+     * Configure Converter to be used.
+     * In our example, we need a converter to convert string values[Roles] to UserProfiles in newUser.jsp
+     */
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(roleConverter);
+    }
 
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
         return messageSource;
+    }
+
+
+    @Override
+    public void configurePathMatch(PathMatchConfigurer matcher) {
+        matcher.setUseRegisteredSuffixPatternMatch(true);
     }
 }
