@@ -19,10 +19,10 @@ import java.util.List;
 public class PlayerController {
     @Autowired
     PlayerService service;
-
+/**
     @Autowired
     TeamService teamService;
-
+**/
     @Autowired
     MessageSource messageSource;
 
@@ -89,8 +89,9 @@ public class PlayerController {
         return "redirect:/player/list";
     }
 
-    @ModelAttribute("roles")
+ /**   @ModelAttribute("roles")
     public  List<Team> initializeProfiles(){
         return teamService.findAllTeams();
     }
+ **/
 }

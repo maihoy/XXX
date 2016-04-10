@@ -17,27 +17,15 @@
 
 <body>
 
-<h2>Registration Form</h2>
+<h2>Comment</h2>
 
-<form:form method="POST" modelAttribute="team">
+<form:form method="POST" modelAttribute="comment">
     <form:input type="hidden" path="id" id="id"/>
     <table>
         <tr>
-            <td><label for="name">Name: </label> </td>
-            <td><form:input path="name" id="name"/></td>
-            <td><form:errors path="name" cssClass="error"/></td>
-        </tr>
-
-        <tr>
-            <td><label for="shortName">Short Name: </label> </td>
-            <td><form:input path="shortName" id="short_name"/></td>
-            <td><form:errors path="shortName" cssClass="error"/></td>
-        </tr>
-
-        <tr>
-            <td><label for="notes">Notes: </label> </td>
-            <td><form:input path="notes" id="notes"/></td>
-            <td><form:errors path="notes" cssClass="error"/></td>
+            <td><label for="text">Text: </label> </td>
+            <td><form:input path="text" id="text"/></td>
+            <td><form:errors path="text" cssClass="error"/></td>
         </tr>
 
         <tr>
@@ -56,6 +44,6 @@
 </form:form>
 <br/>
 <br/>
-Go back to <a href="<c:url value='/team/list' />">List of All Teams</a>
+Go back to <a href="<c:url value='/comment/list' />">List of All Comments</a>
 </body>
 </html>

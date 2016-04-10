@@ -33,7 +33,7 @@
 
         <tr>
             <td>
-                <form:select path="teams" items="${roles}" multiple="false" itemValue="id"/>
+
             </td>
         </tr>
 

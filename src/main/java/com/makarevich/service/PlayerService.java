@@ -4,9 +4,6 @@ import com.makarevich.model.Player;
 
 import java.util.List;
 
-/**
- * Created by j on 3.4.16.
- */
 public interface PlayerService {
     Player findById(int id);
 

@@ -11,10 +11,6 @@ import java.util.Set;
 
 public class Player {
 
-
-
-
-
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
@@ -28,13 +24,13 @@ public class Player {
         private String surname;
 
         @ManyToOne(fetch = FetchType.LAZY)
-       // @JoinColumn(name = "team")
-        @JoinTable(name = "TEAM",
+        @JoinColumn(name = "team")
+       /** @JoinTable(name = "TEAM",
                     joinColumns = {@JoinColumn(name = "id")},
-                    inverseJoinColumns ={@JoinColumn (name = "team")} )
-       // private Team team;
+                    inverseJoinColumns ={@JoinColumn (name = "team")} )*/
+        private Team team;
 
-        private Set<Team> team = new HashSet<Team>();
+       // private Set<Team> team = new HashSet<Team>();
 
         public int getId() {
             return id;
@@ -58,11 +54,10 @@ public class Player {
             this.surname = surname;
         }
 
-        /**public Team getTeam() {   return team;     }
+        public Team getTeam() {   return team;     }
 
         public void setTeam(Team team) {   this.team = team;     }
-
-**/
+    /**
         public  Set<Team> getTeam(){
             return team;
         }
@@ -71,7 +66,7 @@ public class Player {
             this.team = team;
         }
 
-
+    */
 
     @Override
         public boolean equals(Object obj) {

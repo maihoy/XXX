@@ -19,10 +19,10 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.makarevich")
 public class AppConfig extends WebMvcConfigurerAdapter {
-
+/**
     @Autowired
     RoleConverter roleConverter;
-
+*/
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -34,12 +34,17 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     /**
      * Configure Converter to be used.
      * In our example, we need a converter to convert string values[Roles] to UserProfiles in newUser.jsp
-     */
+
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(roleConverter);
     }
+     @Override
+    public void configurePathMatch(PathMatchConfigurer matcher) {
+    matcher.setUseRegisteredSuffixPatternMatch(true);
+    }
 
+     */
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -48,8 +53,4 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
 
-    @Override
-    public void configurePathMatch(PathMatchConfigurer matcher) {
-        matcher.setUseRegisteredSuffixPatternMatch(true);
     }
-}
