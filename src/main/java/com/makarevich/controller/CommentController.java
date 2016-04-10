@@ -82,7 +82,7 @@ public class CommentController  {
     }
 
 
-    @RequestMapping(value = { "/delete-{id}-coment" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/delete-{id}-comment" }, method = RequestMethod.GET)
     public String deleteComment(@PathVariable int id) {
         service.deleteCommentById(id);
         return "redirect:/comment/list";

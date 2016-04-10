@@ -35,7 +35,7 @@
                         <input type="submit" value="Update"/>
                     </c:when>
                     <c:otherwise>
-                        <input type="submit" value="Register"/>
+                        <input type="submit" value="Add"/>
                     </c:otherwise>
                 </c:choose>
             </td>
