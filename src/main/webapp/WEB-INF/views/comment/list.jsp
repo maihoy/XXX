@@ -45,7 +45,6 @@
         <tr>
             <td>${comment.id}</td>
             <td>${comment.text}</td>
-            <td><a href="<c:url value='edit-${comment.id}-comment' />">edit</a></td>
             <td><a href="<c:url value='delete-${comment.id}-comment' />">delete</a></td>
         </tr>
     </c:forEach>

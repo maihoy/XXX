@@ -58,30 +58,6 @@ public class CommentController  {
     }
 
 
-
-    @RequestMapping(value = { "/edit-{id}-comment" }, method = RequestMethod.GET)
-    public String editComment(@PathVariable int id, ModelMap model) {
-        Comment comment = service.findById(id);
-        model.addAttribute("comment", comment);
-        model.addAttribute("edit", true);
-        return "comment/create";
-    }
-
-
-    @RequestMapping(value = { "/edit-{id}-comment" }, method = RequestMethod.POST)
-    public String updateComment(@Valid Comment comment, BindingResult result,
-                             ModelMap model, @PathVariable int id) {
-
-        if (result.hasErrors()) {
-            return "comment/create";
-        }
-
-
-        service.updateComment(comment);
-        return "redirect:/comment/list";
-    }
-
-
     @RequestMapping(value = { "/delete-{id}-comment" }, method = RequestMethod.GET)
     public String deleteComment(@PathVariable int id) {
         service.deleteCommentById(id);

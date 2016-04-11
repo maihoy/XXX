@@ -30,6 +30,7 @@
         <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
         <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
         <td class="menu-item-selected"><a href="<c:url value='/player/list' />">List of Players</a></td>
+        <td class="menu-item"><a href="<c:url value='/comment/list' />">Comments</a></td>
     </tr>
 </table>
 <h2>List of Players</h2>
