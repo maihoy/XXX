@@ -2,9 +2,13 @@ package com.makarevich.service.front.comment;
 
 import com.makarevich.dao.comment.CommentDao;
 import com.makarevich.dao.comment.model.Comment;
+import com.makarevich.service.front.comment.converter.CommentConverter;
+import com.makarevich.service.front.comment.dto.CommentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("commentService")
@@ -13,20 +17,28 @@ public class CommentServiceImpl implements CommentService{
 
     @Autowired
     private CommentDao dao;
+    @Autowired
+    private CommentConverter commentConverter;
 
-    public Comment findById(Long id) {
-        return dao.findById(id);
+    public CommentDTO findById(Long id) {
+        Comment comment = dao.findById(id);
+        return commentConverter.convertToFront(comment);
     }
 
-    public void saveComment(Comment comment) {
-        dao.saveComment(comment);
+    public void saveComment(CommentDTO comment) {
+        if (comment.getId() != null){
+            Comment entity = dao.findById(comment.getId());
+            dao.saveComment(commentConverter.convertToLocal(comment, entity));
+        }  else {
+            dao.saveComment(commentConverter.convertToLocal(comment, new Comment()));
+        }
     }
 
 
-    public void updateComment(Comment comment) {
+    public void updateComment(CommentDTO comment) {
         Comment entity = dao.findById(comment.getId());
         if(entity!=null){
-            entity.setText(comment.getText());
+            commentConverter.convertToLocal(comment, entity);
         }
     }
 
@@ -34,8 +46,13 @@ public class CommentServiceImpl implements CommentService{
         dao.deleteCommentById(id);
     }
 
-    public List<Comment> findAllComments() {
-        return dao.findAllComments();
+    public List<CommentDTO> findAllComments() {
+        List<Comment> comments = dao.findAllComments();
+        List<CommentDTO> result = new ArrayList<CommentDTO>(comments.size());
+        for (Comment comment : comments) {
+            result.add(commentConverter.convertToFront(comment));
+        }
+        return result;
     }
 
 }
