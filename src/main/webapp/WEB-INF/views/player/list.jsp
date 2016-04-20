@@ -42,7 +42,7 @@
         <tr>
             <td>${player.name}</td>
             <td>${player.surname}</td>
-            <td>${player.team}</td>
+            <td>${player.teamName}</td>
             <td><a href="<c:url value='edit-${player.id}-player' />">edit</a></td>
             <td><a href="<c:url value='delete-${player.id}-player' />">delete</a></td>
         </tr>

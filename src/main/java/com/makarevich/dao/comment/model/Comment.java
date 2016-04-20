@@ -1,4 +1,4 @@
-package com.makarevich.model;
+package com.makarevich.dao.comment.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -9,18 +9,18 @@ public class Comment {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+        private Long id;
 
         @Size(min=3, max=500)
         @Column(name = "text", nullable = false)
         private String text;
 
 
-        public int getId() {
+        public Long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Long id) {
             this.id = id;
         }
 

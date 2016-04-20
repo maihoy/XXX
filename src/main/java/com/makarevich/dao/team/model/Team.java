@@ -1,4 +1,4 @@
-package com.makarevich.model;
+package com.makarevich.dao.team.model;
 
 
 import javax.persistence.*;
@@ -13,26 +13,26 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Size(min=3, max=50)
     @Column(name = "name", nullable = false)
     private String name;
 
-   // @Size(min=3, max=10)
+    @Size(min=3, max=10)
     @Column(name = "short_name", nullable = true)
     private String shortName;
 
-   // @Size(min=0, max=250)
+    @Size(min=0, max=250)
     @Column(name = "notes", nullable = true)
     private String notes;
 
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

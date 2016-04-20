@@ -1,7 +1,7 @@
-package com.makarevich.service;
+package com.makarevich.service.front.comment;
 
-import com.makarevich.dao.CommentDao;
-import com.makarevich.model.Comment;
+import com.makarevich.dao.comment.CommentDao;
+import com.makarevich.dao.comment.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ public class CommentServiceImpl implements CommentService{
     @Autowired
     private CommentDao dao;
 
-    public Comment findById(int id) {
+    public Comment findById(Long id) {
         return dao.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class CommentServiceImpl implements CommentService{
         }
     }
 
-    public void deleteCommentById(int id) {
+    public void deleteCommentById(Long id) {
         dao.deleteCommentById(id);
     }
 

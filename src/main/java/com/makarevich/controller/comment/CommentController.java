@@ -1,7 +1,7 @@
-package com.makarevich.controller;
+package com.makarevich.controller.comment;
 
-import com.makarevich.model.Comment;
-import com.makarevich.service.CommentService;
+import com.makarevich.dao.comment.model.Comment;
+import com.makarevich.service.front.comment.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -59,7 +59,7 @@ public class CommentController  {
 
 
     @RequestMapping(value = { "/delete-{id}-comment" }, method = RequestMethod.GET)
-    public String deleteComment(@PathVariable int id) {
+    public String deleteComment(@PathVariable Long id) {
         service.deleteCommentById(id);
         return "redirect:/comment/list";
     }

@@ -1,8 +1,9 @@
-package com.makarevich.dao;
+package com.makarevich.dao.team;
 
 import java.util.List;
 
-import com.makarevich.model.Team;
+import com.makarevich.dao.AbstractDao;
+import com.makarevich.dao.team.model.Team;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
@@ -10,16 +11,16 @@ import org.springframework.stereotype.Repository;
 
 @Repository("teamDao")
 
-public class TeamDaoImpl extends AbstractDao<Integer, Team> implements TeamDao {
-    public Team findById(int id) { return getByKey(id); }
+public class TeamDaoImpl extends AbstractDao<Long, Team> implements TeamDao {
+    public Team findById(Long id) { return getByKey(id); }
 
     public void saveTeam(Team team) {
         persist(team);
     }
 
-    public void deleteTeamById(int id) {
+    public void deleteTeamById(Long id) {
         Query query = getSession().createSQLQuery("delete from TEAM where id = :id");
-        query.setInteger("id", id);
+        query.setLong("id", id);
         query.executeUpdate();
     }
 
@@ -29,7 +30,7 @@ public class TeamDaoImpl extends AbstractDao<Integer, Team> implements TeamDao {
         return (List<Team>) criteria.list();
     }
 
-    public Team findTeamById(int id) {
+    public Team findTeamById(Long id) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("id", id));
         return (Team) criteria.uniqueResult();

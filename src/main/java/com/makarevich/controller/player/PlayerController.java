@@ -1,8 +1,8 @@
-package com.makarevich.controller;
-import com.makarevich.model.Player;
-import com.makarevich.model.Team;
-import com.makarevich.service.PlayerService;
-import com.makarevich.service.TeamService;
+package com.makarevich.controller.player;
+import com.makarevich.service.front.player.PlayerService;
+import com.makarevich.service.front.player.dto.PlayerDTO;
+import com.makarevich.service.front.team.TeamService;
+import com.makarevich.service.front.team.dto.TeamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -15,14 +15,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/player")
-@SessionAttributes("roles")
 public class PlayerController {
     @Autowired
     PlayerService service;
-/**
+
     @Autowired
     TeamService teamService;
-**/
+
     @Autowired
     MessageSource messageSource;
 
@@ -30,7 +29,7 @@ public class PlayerController {
     @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
     public String listPlayer(ModelMap model) {
 
-        List<Player> players = service.findAllPlayers();
+        List<PlayerDTO> players = service.findAllPlayers();
         model.addAttribute("players", players);
         return "player/list";
     }
@@ -38,7 +37,7 @@ public class PlayerController {
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
     public String newPlayer(ModelMap model) {
-        Player player = new Player();
+        PlayerDTO player = new PlayerDTO();
         model.addAttribute("player", player);
         model.addAttribute("edit", false);
         return "player/manage";
@@ -46,7 +45,7 @@ public class PlayerController {
 
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String savePlayer(@Valid Player player, BindingResult result,
+    public String savePlayer(@Valid PlayerDTO player, BindingResult result,
                            ModelMap model) {
 
         if (result.hasErrors()) {
@@ -61,8 +60,8 @@ public class PlayerController {
 
 
     @RequestMapping(value = { "/edit-{id}-player" }, method = RequestMethod.GET)
-    public String editPlayer(@PathVariable int id, ModelMap model) {
-        Player player = service.findById(id);
+    public String editPlayer(@PathVariable Long id, ModelMap model) {
+        PlayerDTO player = service.findById(id);
         model.addAttribute("player", player);
         model.addAttribute("edit", true);
         return "player/manage";
@@ -70,8 +69,8 @@ public class PlayerController {
 
 
     @RequestMapping(value = { "/edit-{id}-player" }, method = RequestMethod.POST)
-    public String updatePlayer(@Valid Player player, BindingResult result,
-                             ModelMap model, @PathVariable int id) {
+    public String updatePlayer(@Valid PlayerDTO player, BindingResult result,
+                             ModelMap model, @PathVariable Long id) {
 
         if (result.hasErrors()) {
             return "player/manage";
@@ -84,14 +83,14 @@ public class PlayerController {
 
 
     @RequestMapping(value = { "/delete-{id}-player" }, method = RequestMethod.GET)
-    public String deletePlayer(@PathVariable int id) {
+    public String deletePlayer(@PathVariable Long id) {
         service.deletePlayerById(id);
         return "redirect:/player/list";
     }
 
- /**   @ModelAttribute("roles")
-    public  List<Team> initializeProfiles(){
+   @ModelAttribute("teams")
+    public  List<TeamDTO> initializeProfiles(){
         return teamService.findAllTeams();
     }
- **/
+
 }

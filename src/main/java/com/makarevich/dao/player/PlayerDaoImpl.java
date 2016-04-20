@@ -1,6 +1,7 @@
-package com.makarevich.dao;
+package com.makarevich.dao.player;
 
-import com.makarevich.model.Player;
+import com.makarevich.dao.AbstractDao;
+import com.makarevich.dao.player.model.Player;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
@@ -10,16 +11,16 @@ import java.util.List;
 
 @Repository("playerDao")
 
-public class PlayerDaoImpl extends AbstractDao<Integer, Player> implements PlayerDao {
-    public Player findById(int id) { return getByKey(id); }
+public class PlayerDaoImpl extends AbstractDao<Long, Player> implements PlayerDao {
+    public Player findById(Long id) { return getByKey(id); }
 
     public void savePlayer(Player player) {
         persist(player);
     }
 
-    public void deletePlayerById(int id) {
+    public void deletePlayerById(Long id) {
         Query query = getSession().createSQLQuery("delete from PLAYER where id = :id");
-        query.setInteger("id", id);
+        query.setLong("id", id);
         query.executeUpdate();
     }
 
@@ -29,7 +30,7 @@ public class PlayerDaoImpl extends AbstractDao<Integer, Player> implements Playe
         return (List<Player>) criteria.list();
     }
 
-    public Player findPlayerById(int id) {
+    public Player findPlayerById(Long id) {
         Criteria criteria = createEntityCriteria();
         criteria.add(Restrictions.eq("id", id));
         return (Player) criteria.uniqueResult();

@@ -1,10 +1,10 @@
-package com.makarevich.model;
+package com.makarevich.dao.player.model;
 
+
+import com.makarevich.dao.team.model.Team;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name="PLAYER")
@@ -13,7 +13,7 @@ public class Player {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
+        private Long id;
 
         @Size(min=3, max=150)
         @Column(name = "name", nullable = false)
@@ -25,18 +25,13 @@ public class Player {
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "team")
-       /** @JoinTable(name = "TEAM",
-                    joinColumns = {@JoinColumn(name = "id")},
-                    inverseJoinColumns ={@JoinColumn (name = "team")} )*/
         private Team team;
 
-       // private Set<Team> team = new HashSet<Team>();
-
-        public int getId() {
+        public Long getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
@@ -57,16 +52,6 @@ public class Player {
         public Team getTeam() {   return team;     }
 
         public void setTeam(Team team) {   this.team = team;     }
-    /**
-        public  Set<Team> getTeam(){
-            return team;
-        }
-
-        public void setTeam(Set<Team> team) {
-            this.team = team;
-        }
-
-    */
 
     @Override
         public boolean equals(Object obj) {

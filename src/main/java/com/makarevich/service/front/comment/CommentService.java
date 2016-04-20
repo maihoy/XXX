@@ -1,17 +1,17 @@
-package com.makarevich.service;
+package com.makarevich.service.front.comment;
 
-import com.makarevich.model.Comment;
+import com.makarevich.dao.comment.model.Comment;
 
 import java.util.List;
 
 public interface CommentService {
-    Comment findById(int id);
+    Comment findById(Long id);
 
     void saveComment(Comment comment);
 
     void updateComment(Comment comment);
 
-    void deleteCommentById(int id);
+    void deleteCommentById(Long id);
 
     List<Comment> findAllComments();
 }

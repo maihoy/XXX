@@ -1,6 +1,7 @@
 package com.makarevich.configuration;
 
-import com.makarevich.converter.RoleConverter;
+import com.makarevich.configuration.formatter.PlayerFormatter;
+import com.makarevich.configuration.formatter.TeamFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +11,6 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -19,10 +19,12 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.makarevich")
 public class AppConfig extends WebMvcConfigurerAdapter {
-/**
+
     @Autowired
-    RoleConverter roleConverter;
-*/
+    private TeamFormatter teamFormatter;
+    @Autowired
+    private PlayerFormatter playerFormatter;
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -31,20 +33,14 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
 }
-    /**
-     * Configure Converter to be used.
-     * In our example, we need a converter to convert string values[Roles] to UserProfiles in newUser.jsp
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(roleConverter);
-    }
-     @Override
-    public void configurePathMatch(PathMatchConfigurer matcher) {
-    matcher.setUseRegisteredSuffixPatternMatch(true);
+        registry.addConverter(teamFormatter);
+        registry.addConverter(playerFormatter);
     }
 
-     */
+
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
