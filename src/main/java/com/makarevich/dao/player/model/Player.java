@@ -15,11 +15,11 @@ public class Player {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @Size(min=3, max=150)
+
         @Column(name = "name", nullable = false)
         private String name;
 
-        @Size(min=3, max=150)
+
         @Column(name = "surname", nullable = false)
         private String surname;
 

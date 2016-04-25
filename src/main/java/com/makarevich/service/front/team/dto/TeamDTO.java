@@ -1,5 +1,9 @@
 package com.makarevich.service.front.team.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Size;
+
 /**
  * User: svetlana.voyteh
  * Date: 12.04.2016
@@ -7,8 +11,14 @@ package com.makarevich.service.front.team.dto;
 public class TeamDTO {
 
     private Long id;
+    @NotBlank
+    @Size(min= 1, max = 40)
     private String name;
+    @NotBlank
+    @Size(min= 1, max = 27)
     private String shortName;
+    @NotBlank
+    @Size(min= 1, max = 350)
     private String notes;
 
     public TeamDTO() {

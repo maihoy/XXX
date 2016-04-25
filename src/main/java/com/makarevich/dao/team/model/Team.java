@@ -15,15 +15,15 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min=3, max=50)
+
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Size(min=3, max=10)
+
     @Column(name = "short_name", nullable = true)
     private String shortName;
 
-    @Size(min=0, max=250)
+
     @Column(name = "notes", nullable = true)
     private String notes;
 

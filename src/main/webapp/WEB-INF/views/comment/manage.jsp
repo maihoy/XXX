@@ -4,27 +4,45 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Team Registration Form</title>
+    <title>Comment Creation Form</title>
 
     <style>
-
         .error {
             color: #ff0000;
+        }
+        textarea{
+            width: 434px;
+            height: 100px;
+        }
+        body{
+            background-color: #ffffff;
+        }
+
+        .menu-item {
+            font-weight: bold;
+            background-color: #ffffff;
         }
     </style>
 
 </head>
 
 <body>
-
-<h2>Comment</h2>
+<table >
+    <tr>
+        <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
+        <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
+        <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
+        <td class="menu-item"><a href="<c:url value='/comment/list' />">List of Comments</a></td>
+    </tr>
+</table>
+<h2>Comment Creation Form</h2>
 
 <form:form method="POST" modelAttribute="comment">
     <form:input type="hidden" path="id" id="id"/>
     <table>
         <tr>
             <td><label for="text">Text: </label> </td>
-            <td><form:input path="text" id="text"/></td>
+            <td><form:textarea path="text" id="text"/></td>
             <td><form:errors path="text" cssClass="error"/></td>
         </tr>
 

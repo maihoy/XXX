@@ -1,6 +1,9 @@
 package com.makarevich.service.front.player.dto;
 
-import com.makarevich.service.front.team.dto.TeamDTO;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Size;
 
 /**
  * User: svetlana.voyteh
@@ -9,7 +12,11 @@ import com.makarevich.service.front.team.dto.TeamDTO;
 public class PlayerDTO {
 
     private Long id;
+    @NotBlank
+    @Size(min= 1, max = 27)
     private String name;
+    @NotBlank
+    @Size(min= 1, max = 27)
     private String surname;
     private Long team;
     private String teamName;

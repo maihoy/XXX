@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Comments</title>
+    <title>List of Comments</title>
     <style>
         tr:first-child{
             font-weight: bold;
@@ -33,10 +33,10 @@
         <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
         <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
         <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
-        <td class="menu-item-selected"><a href="<c:url value='/comment/list' />">Comments</a></td>
+        <td class="menu-item-selected"><a href="<c:url value='/comment/list' />">List of Comments</a></td>
     </tr>
 </table>
-<h2>Comments</h2>
+<h2>List of Comments</h2>
 <table>
     <tr>
         <td>id</td><td>Text</td>

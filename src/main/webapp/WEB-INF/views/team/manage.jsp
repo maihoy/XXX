@@ -7,17 +7,31 @@
     <title>Team Registration Form</title>
 
     <style>
-
         .error {
             color: #ff0000;
+        }
+        body{
+            background-color: #ffffff;
+        }
+
+        .menu-item {
+            font-weight: bold;
+            background-color: #ffffff;
         }
     </style>
 
 </head>
 
 <body>
-
-<h2>Registration Form</h2>
+<table>
+    <tr>
+        <td class="menu-item"><a href="<c:url value='/' />">Home</a></td>
+        <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
+        <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
+        <td class="menu-item"><a href="<c:url value='/comment/list' />">List of Comments</a></td>
+    </tr>
+</table>
+<h2>Team Registration Form</h2>
 
 <form:form method="POST" modelAttribute="team">
     <form:input type="hidden" path="id" id="id"/>
