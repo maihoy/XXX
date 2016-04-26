@@ -1,0 +1,19 @@
+.menu-item {
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.menu-item-selected {
+    font-weight: bold;
+    background-color: #C6C9C4;
+}
+.error {
+    color: #ff0000;
+}
+textarea{
+    width: 434px;
+    height: 100px;
+}
+.table-list{
+ 
+}

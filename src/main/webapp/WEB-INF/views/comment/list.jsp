@@ -4,26 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>List of Comments</title>
-    <style>
-        tr:first-child{
-            font-weight: bold;
-            background-color: #C6C9C4;
-        }
-        body{
-            background-color: #ffffff;
-        }
-
-        .menu-item {
-            font-weight: bold;
-            background-color: #ffffff;
-        }
-
-        .menu-item-selected {
-            font-weight: bold;
-            background-color: #C6C9C4;
-        }
-    </style>
-
+    <link href="<c:url value='/static/css/index.css' />" rel="stylesheet">
 </head>
 
 
@@ -37,7 +18,7 @@
     </tr>
 </table>
 <h2>List of Comments</h2>
-<table>
+<table class="table-list">
     <tr>
         <td>id</td><td>Text</td>
     </tr>

@@ -4,25 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>List Of Players</title>
-    <style>
-        tr:first-child{
-            font-weight: bold;
-            background-color: #C6C9C4;
-        }
-        body{
-            background-color: #ffffff;
-        }
-
-        .menu-item {
-            font-weight: bold;
-            background-color: #ffffff;
-        }
-
-        .menu-item-selected {
-            font-weight: bold;
-            background-color: #C6C9C4;
-        }
-    </style>
+    <link href="<c:url value='/static/css/index.css' />" rel="stylesheet">
 </head>
 <body>
 <table>

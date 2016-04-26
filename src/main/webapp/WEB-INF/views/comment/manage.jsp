@@ -5,24 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Comment Creation Form</title>
-
-    <style>
-        .error {
-            color: #ff0000;
-        }
-        textarea{
-            width: 434px;
-            height: 100px;
-        }
-        body{
-            background-color: #ffffff;
-        }
-
-        .menu-item {
-            font-weight: bold;
-            background-color: #ffffff;
-        }
-    </style>
+    <link href="<c:url value='/static/css/index.css' />" rel="stylesheet">
 
 </head>
 
