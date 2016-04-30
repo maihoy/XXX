@@ -3,6 +3,7 @@ package com.makarevich.service.front.player.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -12,11 +13,11 @@ import javax.validation.constraints.Size;
 public class PlayerDTO {
 
     private Long id;
-    @NotBlank
-    @Size(min= 1, max = 27)
+    @NotNull
+    @Size(min= 1, max = 150)
     private String name;
-    @NotBlank
-    @Size(min= 1, max = 27)
+    @NotNull
+    @Size(min= 1, max = 150)
     private String surname;
     private Long team;
     private String teamName;

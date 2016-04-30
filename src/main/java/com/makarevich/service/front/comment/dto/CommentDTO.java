@@ -2,6 +2,7 @@ package com.makarevich.service.front.comment.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -10,8 +11,8 @@ import javax.validation.constraints.Size;
 public class CommentDTO {
     private Long id;
 
-    @NotBlank
-    @Size(min = 1, max = 3000)
+    @NotNull
+    @Size(min = 1, max = 500)
     private String text;
 
 

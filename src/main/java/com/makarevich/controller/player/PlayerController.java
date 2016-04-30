@@ -45,7 +45,7 @@ public class PlayerController {
 
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String savePlayer(@Valid PlayerDTO player, BindingResult result,
+    public String savePlayer(@Valid @ModelAttribute("player") PlayerDTO player, BindingResult result,
                            ModelMap model) {
 
         if (result.hasErrors()) {
@@ -69,7 +69,7 @@ public class PlayerController {
 
 
     @RequestMapping(value = { "/edit-{id}-player" }, method = RequestMethod.POST)
-    public String updatePlayer(@Valid PlayerDTO player, BindingResult result,
+    public String updatePlayer(@Valid @ModelAttribute("player") PlayerDTO player, BindingResult result,
                              ModelMap model, @PathVariable Long id) {
 
         if (result.hasErrors()) {

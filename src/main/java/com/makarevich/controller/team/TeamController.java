@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,8 +45,8 @@ public class TeamController {
 
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String saveTeam(@Valid TeamDTO team, BindingResult result,
-                               ModelMap model) {
+    public String saveTeam(@Valid @ModelAttribute("team") TeamDTO team, BindingResult result,
+                           ModelMap model) {
 
         if (result.hasErrors()) {
             return "team/manage";
@@ -68,7 +69,7 @@ public class TeamController {
 
 
     @RequestMapping(value = { "/edit-{id}-team" }, method = RequestMethod.POST)
-    public String updateTeam(@Valid TeamDTO team, BindingResult result,
+    public String updateTeam(@Valid @ModelAttribute("team") TeamDTO team, BindingResult result,
                                  ModelMap model, @PathVariable Long id) {
 
         if (result.hasErrors()) {
