@@ -1,0 +1,63 @@
+body{
+    height: 1000px;
+    background: #fdffff;
+    background: -moz-linear-gradient(top, #fdffff 0%, #e1ffff 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #fdffff), color-stop(100%, #e1ffff));
+    background: -webkit-linear-gradient(top, #fdffff 0%, #e1ffff 100%);
+    background: -o-linear-gradient(top, #fdffff 0%, #e1ffff 100%);
+    background: -ms-linear-gradient(top, #fdffff 0%, #e1ffff 100%);
+    background: linear-gradient(to bottom, #fdffff 0%, #e1ffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdffff', endColorstr='#e1ffff', GradientType=0 );
+}
+a{
+    text-decoration: none;
+}
+.menu-item {
+    font-weight: bold;
+
+}
+
+.menu-item-selected {
+    font-weight: bold;
+    background-color: #C6C9C4;
+    border-radius: 3px;
+}
+.error {
+    color: #ff0000;
+}
+textarea{
+    width: 434px;
+    height: 100px;
+}
+.table-list tr:nth-child(odd){
+    background-color: azure;
+}
+.wrapper{
+    width:80%;
+    margin:0 auto;
+}
+.navigate .menu-item:hover {
+    font-weight: bold;
+    background-color: #e1ffff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.navigate .menu-item-selected:hover{
+    font-weight: bold;
+    background-color: #e1ffff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.navigate {
+    margin: 30px;
+}
+.navigate td{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+a{
+    color: black;
+}
+a:visited{
+    color: inherit;
+}

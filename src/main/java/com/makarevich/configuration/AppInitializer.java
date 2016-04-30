@@ -2,9 +2,6 @@ package com.makarevich.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-/**
- * Created by j on 19.3.16.
- */
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
     @Override

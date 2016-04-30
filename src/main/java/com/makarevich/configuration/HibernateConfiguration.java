@@ -33,7 +33,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.makarevich.model" });
+        sessionFactory.setPackagesToScan(new String[] { "com.makarevich.dao" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
