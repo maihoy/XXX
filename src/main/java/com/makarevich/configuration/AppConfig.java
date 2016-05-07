@@ -1,6 +1,7 @@
 package com.makarevich.configuration;
 
 import com.makarevich.configuration.formatter.PlayerFormatter;
+import com.makarevich.configuration.formatter.RoleToUserProfileConverter;
 import com.makarevich.configuration.formatter.TeamFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -25,6 +26,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     private TeamFormatter teamFormatter;
     @Autowired
     private PlayerFormatter playerFormatter;
+    @Autowired
+    private RoleToUserProfileConverter roleToUserProfileConverter;
 
     @Bean
     public ViewResolver viewResolver() {
@@ -39,6 +42,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(teamFormatter);
         registry.addConverter(playerFormatter);
+        registry.addConverter(roleToUserProfileConverter);
     }
 
 

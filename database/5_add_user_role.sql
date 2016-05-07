@@ -1,0 +1,5 @@
+CREATE TABLE `USER_ROLE` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(30) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -1,15 +1,9 @@
 package com.makarevich.service.front.player.dto;
 
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * User: svetlana.voyteh
- * Date: 14.04.2016
- */
 public class PlayerDTO {
 
     private Long id;

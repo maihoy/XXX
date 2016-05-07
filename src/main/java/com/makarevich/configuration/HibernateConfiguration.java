@@ -1,8 +1,5 @@
 package com.makarevich.configuration;
 
-/**
- * Created by j on 19.3.16.
- */
 
 import java.util.Properties;
 
