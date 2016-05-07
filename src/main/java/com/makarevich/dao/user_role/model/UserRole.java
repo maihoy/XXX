@@ -15,7 +15,7 @@ public class UserRole {
 	private Long id;
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
-	private String type = UserRoleType.USER.getUserProfileType();
+	private String type = UserRoleType.USER.getUserRoleType();
 	
 	public Long getId() {
 		return id;

@@ -4,7 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import com.makarevich.dao.user.model.User;
+import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.service.front.user.UserService;
+import com.makarevich.service.front.user.dto.UserDTO;
+import com.makarevich.service.front.user_role.UserRoleService;
+import com.makarevich.service.front.user_role.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,10 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import com.makarevich.dao.user.model.User;
-import com.makarevich.dao.user_role.model.UserRole;
-import com.makarevich.service.front.user_role.UserRoleService;
-import com.makarevich.service.front.user.UserService;
 
 import java.util.List;
 
@@ -30,10 +33,13 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
-    UserRoleService userProfileService;
+    UserRoleService userRoleService;
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    MessageSource messageSource;
 
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     public String index() {
@@ -75,13 +81,13 @@ public class IndexController {
 
     @RequestMapping(value = "/newUser", method = RequestMethod.GET)
     public String newRegistration(ModelMap model) {
-        User user = new User();
+        UserDTO user = new UserDTO();
         model.addAttribute("user", user);
         return "newuser";
     }
 
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
-    public String saveRegistration(@Valid User user,
+    public String saveRegistration(@Valid @ModelAttribute("user") User user,
                                    BindingResult result, ModelMap model) {
 
         if (result.hasErrors()) {
@@ -95,8 +101,8 @@ public class IndexController {
         System.out.println("Password : "+user.getPassword());
         System.out.println("Email : "+user.getEmail());
         System.out.println("Checking UsrProfiles....");
-        if(user.getUserProfiles()!=null){
-            for(UserRole profile : user.getUserProfiles()){
+        if(user.getUserRoles()!=null){
+            for(UserRole profile : user.getUserRoles()){
                 System.out.println("Profile : "+ profile.getType());
             }
         }
@@ -124,6 +130,6 @@ public class IndexController {
 
     @ModelAttribute("roles")
     public List<UserRole> initializeProfiles() {
-        return userProfileService.findAll();
+        return userRoleService.findAll();
     }
 }

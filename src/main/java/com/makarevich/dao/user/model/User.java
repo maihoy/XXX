@@ -3,16 +3,7 @@ package com.makarevich.dao.user.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.makarevich.dao.user_role.model.State;
 import com.makarevich.dao.user_role.model.UserRole;
@@ -44,11 +35,11 @@ public class User {
 	@Column(name="state", nullable=false)
 	private String state= State.ACTIVE.getState();
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinTable(name = "USER_PROFILE",
              joinColumns = { @JoinColumn(name = "user_id") },
              inverseJoinColumns = { @JoinColumn(name = "user_role_id") })
-	private Set<UserRole> userProfiles = new HashSet<UserRole>();
+	private Set<UserRole> userRoles = new HashSet<UserRole>();
 
 	public Long getId() {
 		return id;
@@ -98,12 +89,12 @@ public class User {
 		this.state = state;
 	}
 
-	public Set<UserRole> getUserProfiles() {
-		return userProfiles;
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
 	}
 
-	public void setUserProfiles(Set<UserRole> userProfiles) {
-		this.userProfiles = userProfiles;
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
 
 
@@ -130,7 +121,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", password=" + password
 				+ ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", state=" + state + ", userProfiles=" + userProfiles +"]";
+				+ ", email=" + email + ", state=" + state + ", userProfiles=" + userRoles +"]";
 	}
 
 	

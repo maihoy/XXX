@@ -7,13 +7,17 @@ import javax.validation.constraints.Size;
 public class PlayerDTO {
 
     private Long id;
+
     @NotNull
     @Size(min= 1, max = 150)
     private String name;
+
     @NotNull
     @Size(min= 1, max = 150)
     private String surname;
+
     private Long team;
+
     private String teamName;
 
     public PlayerDTO() {

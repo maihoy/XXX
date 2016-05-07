@@ -11,22 +11,18 @@ import com.makarevich.service.front.user_role.UserRoleService;
 public class RoleToUserProfileConverter implements Converter<Object, UserRole>{
 
 	@Autowired
-	UserRoleService userProfileService;
+	UserRoleService userRoleService;
 
-	/*
-	 * Gets UserRole by Id
-	 * @see org.springframework.core.convert.converter.Converter#convert(java.lang.Object)
-	 */
+
 	public UserRole convert(Object element) {
 		Long id = Long.parseLong((String)element);
-		UserRole profile= userProfileService.findById(id);
-		System.out.println("Profile : "+profile);
-		return profile;
+		UserRole role= userRoleService.findById(id);
+		System.out.println("Profile : "+role);
+		return role;
 	}
 	
 	/*
 	 * Gets UserRole by type
-	 * @see org.springframework.core.convert.converter.Converter#convert(java.lang.Object)
 	 */
 	/*
 	public UserRole convert(Object element) {

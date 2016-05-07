@@ -4,14 +4,14 @@ public enum UserRoleType {
 	USER("USER"),
 	ADMIN("ADMIN");
 	
-	String userProfileType;
+	String userRoleType;
 	
-	private UserRoleType(String userProfileType){
-		this.userProfileType = userProfileType;
+	private UserRoleType(String userRoleType){
+		this.userRoleType = userRoleType;
 	}
 	
-	public String getUserProfileType(){
-		return userProfileType;
+	public String getUserRoleType(){
+		return userRoleType;
 	}
 	
 }

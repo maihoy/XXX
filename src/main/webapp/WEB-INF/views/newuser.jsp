@@ -23,7 +23,7 @@
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="firstName">First Name</label>
 				<div class="col-md-7">
-					<form:input type="text" path="firstName" id="firstName" class="form-control input-sm"/>
+					<form:input type="text" path="firstName" id="firstName" class="form-control input-sm" />
 					<div class="has-error">
 						<form:errors path="firstName" class="help-inline"/>
 					</div>
@@ -72,9 +72,9 @@
 			<div class="form-group col-md-12">
 				<label class="col-md-3 control-lable" for="userProfiles">Roles</label>
 				<div class="col-md-7">
-					<form:select path="userProfiles" items="${roles}" multiple="true" itemValue="id" itemLabel="type" class="form-control input-sm"/>
+					<form:select path="userRoles" items="${roles}" multiple="false" itemValue="id" itemLabel="type" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="userProfiles" class="help-inline"/>
+						<form:errors path="userRoles" class="help-inline"/>
 					</div>
 				</div>
 			</div>

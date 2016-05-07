@@ -4,10 +4,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Login page</title>
-		<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet">
-		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
-	</head>
+		</head>
 
 	<body>
 		<div id="mainWrapper">
@@ -15,10 +12,10 @@
 				<div class="login-card">
 					<div class="login-form">
 						<c:url var="loginUrl" value="/login" />
-						<form action="${loginUrl}" method="post" class="form-horizontal">
+						<form action="${loginUrl}" method="post" class="form-horizontal" >
 							<c:if test="${param.error != null}">
 								<div class="alert alert-danger">
-									<p>Invalid username and password.</p>
+									<p>Invalid email and password.</p>
 								</div>
 							</c:if>
 							<c:if test="${param.logout != null}">
@@ -27,8 +24,8 @@
 								</div>
 							</c:if>
 							<div class="input-group input-sm">
-								<label class="input-group-addon" for="username"><i class="fa fa-user"></i></label>
-								<input type="text" class="form-control" id="username" name="ssoId" placeholder="Enter Username" required>
+								<label class="input-group-addon" for="email"><i class="fa fa-user"></i></label>
+								<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required>
 							</div>
 							<div class="input-group input-sm">
 								<label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label> 
