@@ -1,9 +1,9 @@
-package com.makarevich.dao.user_role;
+package com.makarevich.dao.userrole;
 
 import java.util.List;
 
 import com.makarevich.dao.AbstractDao;
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.model.UserRole;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;

@@ -1,11 +1,9 @@
 package com.makarevich.service.front.user.dto;
 
-import com.makarevich.dao.user_role.model.UserRole;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 public class UserDTO {
     private Long id;

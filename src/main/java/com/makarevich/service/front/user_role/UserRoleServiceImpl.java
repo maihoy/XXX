@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.makarevich.dao.user_role.UserRoleDao;
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.UserRoleDao;
+import com.makarevich.dao.userrole.model.UserRole;
 
 @Service("userProfileService")
 @Transactional

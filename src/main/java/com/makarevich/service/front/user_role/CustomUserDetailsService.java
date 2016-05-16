@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.makarevich.dao.user.model.User;
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.model.UserRole;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService{

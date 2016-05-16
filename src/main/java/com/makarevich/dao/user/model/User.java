@@ -5,8 +5,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.makarevich.dao.user_role.model.State;
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.model.State;
+import com.makarevich.dao.userrole.model.UserRole;
 
 @Entity
 @Table(name="USER")

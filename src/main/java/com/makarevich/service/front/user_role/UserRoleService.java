@@ -2,7 +2,7 @@ package com.makarevich.service.front.user_role;
 
 import java.util.List;
 
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.model.UserRole;
 
 public interface UserRoleService {
 

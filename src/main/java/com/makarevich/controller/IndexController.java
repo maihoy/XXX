@@ -5,11 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import com.makarevich.dao.user.model.User;
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.model.UserRole;
 import com.makarevich.service.front.user.UserService;
 import com.makarevich.service.front.user.dto.UserDTO;
 import com.makarevich.service.front.user_role.UserRoleService;
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
