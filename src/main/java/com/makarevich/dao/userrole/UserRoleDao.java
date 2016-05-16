@@ -1,8 +1,8 @@
-package com.makarevich.dao.user_role;
+package com.makarevich.dao.userrole;
 
 import java.util.List;
 
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.model.UserRole;
 
 public interface UserRoleDao {
 

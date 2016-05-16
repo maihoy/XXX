@@ -1,4 +1,4 @@
-package com.makarevich.dao.user_role.model;
+package com.makarevich.dao.userrole.model;
 
 public enum State {
 

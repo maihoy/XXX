@@ -1,6 +1,5 @@
 package com.makarevich.configuration.formatter;
 
-import com.makarevich.dao.user_role.model.UserRole;
 import com.makarevich.service.front.user_role.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
