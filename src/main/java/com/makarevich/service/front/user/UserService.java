@@ -1,10 +1,11 @@
 package com.makarevich.service.front.user;
 
 import com.makarevich.dao.user.model.User;
+import com.makarevich.service.front.user.dto.UserDTO;
 
 public interface UserService {
 
-	void save(User user);
+	void save(UserDTO user);
 	
 	User findById(Long id);
 	

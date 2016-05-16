@@ -11,6 +11,7 @@ import com.makarevich.service.front.user.dto.UserDTO;
 import com.makarevich.service.front.user_role.UserRoleService;
 import com.makarevich.service.front.user_role.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,8 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,10 +29,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
-
 public class IndexController {
 
     @Autowired
@@ -50,12 +53,6 @@ public class IndexController {
     public String adminPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
         return "admin";
-    }
-
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
-    public String dbaPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "dba";
     }
 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
@@ -87,7 +84,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
-    public String saveRegistration(@Valid @ModelAttribute("user") User user,
+    public String saveRegistration(@Valid @ModelAttribute("user") UserDTO user,
                                    BindingResult result, ModelMap model) {
 
         if (result.hasErrors()) {
@@ -96,23 +93,9 @@ public class IndexController {
         }
         userService.save(user);
 
-        System.out.println("First Name : "+user.getFirstName());
-        System.out.println("Last Name : "+user.getLastName());
-        System.out.println("Password : "+user.getPassword());
-        System.out.println("Email : "+user.getEmail());
-        System.out.println("Checking UsrProfiles....");
-        if(user.getUserRoles()!=null){
-            for(UserRole profile : user.getUserRoles()){
-                System.out.println("Profile : "+ profile.getType());
-            }
-        }
-
         model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
         return "registrationsuccess";
     }
-
-
-
 
     private String getPrincipal(){
         String userName = null;
@@ -126,10 +109,38 @@ public class IndexController {
         return userName;
     }
 
-
-
     @ModelAttribute("roles")
-    public List<UserRole> initializeProfiles() {
+    public List<UserRoleDTO> initializeProfiles() {
         return userRoleService.findAll();
+    }
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Set.class, "roles", new CustomCollectionEditor(Set.class)
+        {
+            @Override
+            protected Object convertElement(Object element)
+            {
+                Long id = null;
+
+                if(element instanceof String && !((String)element).equals("")){
+                    //From the JSP 'element' will be a String
+                    try{
+                        id = Long.parseLong((String) element);
+                    }
+                    catch (NumberFormatException e) {
+                        System.out.println("Element was " + ((String) element));
+                        e.printStackTrace();
+                    }
+                }
+
+                else if(element instanceof Long) {
+                    //From the database 'element' will be a Long
+                    id = (Long) element;
+                }
+
+                return id != null ? userRoleService.findById(id) : null;
+            }
+        });
     }
 }

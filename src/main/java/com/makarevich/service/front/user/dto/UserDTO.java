@@ -1,6 +1,6 @@
 package com.makarevich.service.front.user.dto;
 
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.service.front.user_role.dto.UserRoleDTO;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
@@ -27,9 +27,11 @@ public class UserDTO {
     @Size(min= 1, max = 45)
     private String email;
 
-    @NotNull
-   // @Size(min= 1, max = 45)
+//    @NotNull
+//    @Size(min= 1, max = 45)
     private String state;
+
+    private Set<UserRoleDTO> roles;
 
     public UserDTO() {
     }
@@ -74,6 +76,11 @@ public class UserDTO {
 
     public void setState(String state){ this.state= state;}
 
+    public Set<UserRoleDTO> getRoles() {
+        return roles;
+    }
 
-
+    public void setRoles(Set<UserRoleDTO> roles) {
+        this.roles = roles;
+    }
 }

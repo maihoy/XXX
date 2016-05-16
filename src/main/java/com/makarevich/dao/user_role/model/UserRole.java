@@ -15,7 +15,7 @@ public class UserRole {
 	private Long id;
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)
-	private String type = UserRoleType.USER.getUserRoleType();
+	private String type;
 	
 	public Long getId() {
 		return id;
@@ -32,9 +32,6 @@ public class UserRole {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {

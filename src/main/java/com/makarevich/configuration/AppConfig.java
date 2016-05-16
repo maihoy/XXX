@@ -42,7 +42,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(teamFormatter);
         registry.addConverter(playerFormatter);
-        registry.addConverter(roleToUserProfileConverter);
+//        registry.addConverter(roleToUserProfileConverter);
     }
 
 

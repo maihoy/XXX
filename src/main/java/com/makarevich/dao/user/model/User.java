@@ -35,7 +35,7 @@ public class User {
 	@Column(name="state", nullable=false)
 	private String state= State.ACTIVE.getState();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USER_PROFILE",
              joinColumns = { @JoinColumn(name = "user_id") },
              inverseJoinColumns = { @JoinColumn(name = "user_role_id") })

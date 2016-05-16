@@ -2,11 +2,21 @@ package com.makarevich.service.front.user.converter;
 
 import com.makarevich.converter.Converter;
 import com.makarevich.dao.user.model.User;
+import com.makarevich.dao.user_role.UserRoleDao;
+import com.makarevich.dao.user_role.model.UserRole;
 import com.makarevich.service.front.user.dto.UserDTO;
+import com.makarevich.service.front.user_role.converter.UserRoleConverter;
+import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserConverter implements Converter<User, UserDTO>{
+
+    @Autowired
+    private UserRoleConverter userRoleConverter;
+    @Autowired
+    private UserRoleDao userRoleDao;
 
     public UserDTO convertToFront(User user){
         UserDTO userDTO = new UserDTO();
@@ -18,6 +28,9 @@ public class UserConverter implements Converter<User, UserDTO>{
         userDTO.setEmail(user.getEmail());
         userDTO.setState(user.getState());
 
+        for (UserRole userRole : user.getUserRoles()) {
+            userDTO.getRoles().add(userRoleConverter.convertToFront(userRole));
+        }
         return userDTO;
     }
 
@@ -27,6 +40,12 @@ public class UserConverter implements Converter<User, UserDTO>{
         user.setPassword(dto.getPassword());
         user.setEmail(dto.getEmail());
         user.setState(dto.getState());
+
+        user.getUserRoles().clear();
+        for (UserRoleDTO userRoleDTO : dto.getRoles()) {
+            UserRole userRole = userRoleDao.findById(userRoleDTO.getId());
+            user.getUserRoles().add(userRole);
+        }
 
         return user;
     }
