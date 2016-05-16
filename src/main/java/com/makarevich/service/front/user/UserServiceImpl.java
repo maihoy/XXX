@@ -1,6 +1,6 @@
 package com.makarevich.service.front.user;
 
-import com.makarevich.dao.user_role.model.State;
+import com.makarevich.dao.userrole.model.State;
 import com.makarevich.service.front.user.converter.UserConverter;
 import com.makarevich.service.front.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;

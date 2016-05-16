@@ -2,8 +2,8 @@ package com.makarevich.service.front.user.converter;
 
 import com.makarevich.converter.Converter;
 import com.makarevich.dao.user.model.User;
-import com.makarevich.dao.user_role.UserRoleDao;
-import com.makarevich.dao.user_role.model.UserRole;
+import com.makarevich.dao.userrole.UserRoleDao;
+import com.makarevich.dao.userrole.model.UserRole;
 import com.makarevich.service.front.user.dto.UserDTO;
 import com.makarevich.service.front.user_role.converter.UserRoleConverter;
 import com.makarevich.service.front.user_role.dto.UserRoleDTO;

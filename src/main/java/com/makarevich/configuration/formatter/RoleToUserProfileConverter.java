@@ -11,7 +11,7 @@ import com.makarevich.service.front.user_role.UserRoleService;
 public class RoleToUserProfileConverter implements Converter<UserRoleDTO, UserRoleDTO>{
 
 	@Autowired
-	UserRoleService userRoleService;
+	private UserRoleService userRoleService;
 
 
 	public UserRoleDTO convert(UserRoleDTO element) {
