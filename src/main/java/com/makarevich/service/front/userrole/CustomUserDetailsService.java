@@ -1,4 +1,4 @@
-package com.makarevich.service.front.user_role;
+package com.makarevich.service.front.userrole;
 
 import java.util.ArrayList;
 import java.util.List;

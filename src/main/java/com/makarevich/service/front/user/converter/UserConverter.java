@@ -5,8 +5,8 @@ import com.makarevich.dao.user.model.User;
 import com.makarevich.dao.userrole.UserRoleDao;
 import com.makarevich.dao.userrole.model.UserRole;
 import com.makarevich.service.front.user.dto.UserDTO;
-import com.makarevich.service.front.user_role.converter.UserRoleConverter;
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import com.makarevich.service.front.userrole.converter.UserRoleConverter;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

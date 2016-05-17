@@ -1,10 +1,10 @@
-package com.makarevich.service.front.user_role;
+package com.makarevich.service.front.userrole;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.makarevich.service.front.user_role.converter.UserRoleConverter;
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import com.makarevich.service.front.userrole.converter.UserRoleConverter;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

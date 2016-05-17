@@ -1,8 +1,8 @@
-package com.makarevich.service.front.user_role;
+package com.makarevich.service.front.userrole;
 
 import java.util.List;
 
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 
 public interface UserRoleService {
 

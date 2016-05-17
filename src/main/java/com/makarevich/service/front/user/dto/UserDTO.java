@@ -1,6 +1,6 @@
 package com.makarevich.service.front.user.dto;
 
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;

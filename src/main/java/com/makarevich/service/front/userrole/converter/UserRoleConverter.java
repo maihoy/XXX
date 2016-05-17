@@ -1,8 +1,8 @@
-package com.makarevich.service.front.user_role.converter;
+package com.makarevich.service.front.userrole.converter;
 
 import com.makarevich.converter.Converter;
 import com.makarevich.dao.userrole.model.UserRole;
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.stereotype.Component;
 
 @Component

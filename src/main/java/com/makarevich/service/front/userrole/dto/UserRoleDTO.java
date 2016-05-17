@@ -1,4 +1,4 @@
-package com.makarevich.service.front.user_role.dto;
+package com.makarevich.service.front.userrole.dto;
 
 
 public class UserRoleDTO {

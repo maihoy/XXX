@@ -1,11 +1,11 @@
 package com.makarevich.configuration.formatter;
 
-import com.makarevich.service.front.user_role.dto.UserRoleDTO;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.makarevich.service.front.user_role.UserRoleService;
+import com.makarevich.service.front.userrole.UserRoleService;
 
 @Component
 public class RoleToUserProfileConverter implements Converter<UserRoleDTO, UserRoleDTO>{

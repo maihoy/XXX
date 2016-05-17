@@ -46,6 +46,7 @@ public class SecutityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
+                //.antMatchers("/", "/home").access("hasRole('ADMIN') or hasRole('USER')")
                 .antMatchers("/admin/**","/newuser").access("hasRole('ADMIN')")
                 .and().formLogin().loginPage("/login")
                 .usernameParameter("email").passwordParameter("password")
