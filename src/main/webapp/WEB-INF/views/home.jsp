@@ -11,28 +11,34 @@
     </head>
     <body>
         <div class="wrapper">
-            <table class="navigate">
-                <tr>
-                    <td class="menu-item-selected"><a href="<c:url value='/' />">Home</a></td>
-                    <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
-                    <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
-                    <td class="menu-item"><a href="<c:url value='/comment/list' />">List of Comments</a></td>
-                    <td>${user}</td>
-                    <td class="menu-item">
-                        <sec:authorize access="hasRole('ADMIN')">
-                        <label><a href="#">List of Users</a></label>
-                        </sec:authorize>
-                    </td>
-                    <td>
-                        <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+            <div class="login-block">
+                <div class="user">${user}</div>
+                <div class="login">
+                    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                         <label><a href="<c:url value='/logout' />">logout</a></label>
+                    </sec:authorize>
+                    <sec:authorize access="isAnonymous()">
+                        <label><a href="<c:url value='/login'/>">login </a> </label>
+                    </sec:authorize>
+                </div>
+            </div>
+            <div class="menu">
+                <table class="navigate">
+                    <tr>
+                        <td class="menu-item-selected"><a href="<c:url value='/' />">Home</a></td>
+                        <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
+                        <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
+                        <td class="menu-item"><a href="<c:url value='/comment/list' />">Comments</a></td>
+
+                        <sec:authorize access="hasRole('ADMIN')">
+                            <td class="menu-item">
+                                <label><a href="#">List of Users</a></label>
+                            </td>
                         </sec:authorize>
-                        <sec:authorize access="isAnonymous()">
-                            <label><a href="<c:url value='/login'/>">login </a> </label>
-                        </sec:authorize>
-                    </td>
-                </tr>
-            </table>
+
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>
