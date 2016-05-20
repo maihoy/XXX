@@ -5,12 +5,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Home</title>
         <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
-        <link href="<c:url value='/static/css/index.css' />" rel="stylesheet">
+        <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
     </head>
     <body>
-        <div class="wrapper">
+        <div class="mainWrapper">
             <div class="login-block">
                 <div class="user">${user}</div>
                 <div class="login">
@@ -22,23 +23,53 @@
                     </sec:authorize>
                 </div>
             </div>
-            <div class="menu">
-                <table class="navigate">
-                    <tr>
-                        <td class="menu-item-selected"><a href="<c:url value='/' />">Home</a></td>
-                        <td class="menu-item"><a href="<c:url value='/team/list' />">List of Teams</a></td>
-                        <td class="menu-item"><a href="<c:url value='/player/list' />">List of Players</a></td>
-                        <td class="menu-item"><a href="<c:url value='/comment/list' />">Comments</a></td>
 
-                        <sec:authorize access="hasRole('ADMIN')">
-                            <td class="menu-item">
-                                <label><a href="#">List of Users</a></label>
-                            </td>
-                        </sec:authorize>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
 
-                    </tr>
-                </table>
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<c:url value='/' />">Project name</a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="<c:url value='/' />">Home<span class="sr-only">(current)</span></a></li>
+                                <li><a href="<c:url value='/team/list' />">List of Teams</a></li>
+                                <li><a href="<c:url value='/player/list' />">List of Players</a></li>
+                                <li><a href="<c:url value='/comment/list' />">Comments</a></li>
+                                <sec:authorize access="hasRole('ADMIN')">
+                                     <li><a href="#">List of Users</a></li>
+                                </sec:authorize>
+                            </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                                <li><p class="navbar-text">Signed in as ${user}</p></li>
+                            </sec:authorize>
+                            <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                                <li><a href="<c:url value='/logout' />">Sign out</a></li>
+                            </sec:authorize>
+                            <sec:authorize access="isAnonymous()">
+                                <li><a href="<c:url value='/login'/>">Sign in </a> </li>
+                            </sec:authorize>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="container">
+
             </div>
         </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="/static/js/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/static/js/bootstrap.js"></script>
     </body>
 </html>

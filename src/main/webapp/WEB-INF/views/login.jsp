@@ -3,46 +3,55 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Login page</title>
-		</head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Sign in</title>
+		<link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
+		<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
+		<link href="<c:url value='/static/css/signin.css' />" rel="stylesheet">
+
+	</head>
 
 	<body>
-		<div id="mainWrapper">
-			<div class="login-container">
-				<div class="login-card">
-					<div class="login-form">
-						<c:url var="loginUrl" value="/login" />
-						<form action="${loginUrl}" method="post" class="form-horizontal" >
-							<c:if test="${param.error != null}">
-								<div class="alert alert-danger">
-									<p>Invalid email and password.</p>
-								</div>
-							</c:if>
-							<c:if test="${param.logout != null}">
-								<div class="alert alert-success">
-									<p>You have been logged out successfully.</p>
-								</div>
-							</c:if>
-							<div class="input-group input-sm">
-								<label class="input-group-addon" for="email"><i class="fa fa-user"></i></label>
-								<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required>
-							</div>
-							<div class="input-group input-sm">
-								<label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label> 
-								<input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
-							</div>
-							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-								
-							<div class="form-actions">
-								<input type="submit"
-									class="btn btn-block btn-primary btn-default" value="Log in">
-							</div>
-						</form>
-					</div>
+	<div class="container">
+		<c:url var="loginUrl" value="/login" />
+		<form action="${loginUrl}" method="post" class="form-sigin">
+			<c:if test="${param.error != null}">
+				<div class="alert alert-danger">
+					<p>Invalid email and password.</p>
+				</div>
+			</c:if>
+			<c:if test="${param.logout != null}">
+				<div class="alert alert-success">
+					<p>You have been logged out successfully.</p>
+				</div>
+			</c:if>
+			<div class="form-group">
+                <label class="sr-only " for="inputEmail">Email address</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="inputEmail" placeholder="Email" required="" autofocus="">
 				</div>
 			</div>
-		</div>
+			<div class="form-group">
+                <label class="sr-only " for="inputEmail">Password</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword" placeholder="Password" required="">
+				</div>
+			</div>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<div class="form-group">
+				<div class="col-sm-10">
+					<button type="submit" class="btn btn-block btn-primary">Sign in</button>
+				</div>
+			</div>
+		</form>
+	</div>
 
+
+	</div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/static/js/jquery.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/static/js/bootstrap.js"></script>
 	</body>
 </html>

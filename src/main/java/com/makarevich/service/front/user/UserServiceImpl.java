@@ -35,12 +35,14 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 	
-	public User findById(Long id) {
-		return dao.findById(id);
+	public UserDTO findById(Long id) {
+		User user = dao.findById(id);
+		return userConverter.convertToFront(user);
 	}
 
-	public User findByEmail(String email) {
-		return dao.findByEmail(email);
+	public UserDTO findByEmail(String email) {
+		User user = dao.findByEmail(email);
+		return userConverter.convertToFront(user);
 	}
 	
 }

@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserRoleConverter implements Converter<UserRole, UserRoleDTO>{
 
-    public UserRoleDTO convertToFront(UserRole userProfile){
-        UserRoleDTO userProfileDTO = new UserRoleDTO();
+    public UserRoleDTO convertToFront(UserRole userRole){
+        UserRoleDTO userRoleDTO = new UserRoleDTO();
 
-        userProfileDTO.setId(userProfile.getId());
-        userProfileDTO.setType(userProfile.getType());
+        userRoleDTO.setId(userRole.getId());
+        userRoleDTO.setType(userRole.getType());
 
-        return userProfileDTO;
+        return userRoleDTO;
     }
 
     public UserRole convertToLocal(UserRoleDTO dto, UserRole userRole){

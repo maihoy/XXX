@@ -1,5 +1,6 @@
 package com.makarevich.controller.user;
 
+import com.makarevich.dao.user.model.User;
 import com.makarevich.service.front.user.UserService;
 import com.makarevich.service.front.user.dto.UserDTO;
 import com.makarevich.service.front.userrole.UserRoleService;

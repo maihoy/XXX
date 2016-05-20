@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.makarevich.service.front.user.UserService;
+import com.makarevich.service.front.user.dto.UserDTO;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,7 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException {
-		User user = userService.findByEmail(email);
+		UserDTO user = userService.findByEmail(email);
 		System.out.println("User : "+user);
 		if(user==null){
 			System.out.println("User not found");
@@ -36,10 +38,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 	}
 
 	
-	private List<GrantedAuthority> getGrantedAuthorities(User user){
+	private List<GrantedAuthority> getGrantedAuthorities(UserDTO user){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
-		for(UserRole userRole : user.getUserRoles()){
+		for(UserRoleDTO userRole : user.getRoles()){
 			System.out.println("UserRole : "+userRole);
 			authorities.add(new SimpleGrantedAuthority("ROLE_"+userRole.getType()));
 		}
