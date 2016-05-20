@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
@@ -8,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
+
     <title>Team Registration Form</title>
 </head>
 <body>
@@ -47,49 +49,44 @@
                 </div>
             </div>
         </nav>
+
         <div class="container " >
             <h2>Team Registration Form</h2>
-            <form class="form-horizontal">
+
             <form:form method="POST" modelAttribute="team">
                 <form:input type="hidden" path="id" id="id"/>
+                <table class=" table">
+                    <tr>
+                        <td style="line-height: 2" class="col-sm-2 control-label"><label for="name">Name: </label> </td>
+                        <td class="col-sm-6"><form:input  cssClass="form-control" path="name" id="name"/></td>
+                        <td ><form:errors path="name" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
+                    </tr>
 
+                    <tr>
+                        <td style="line-height: 2" class="col-sm-2 control-label"><label for="shortName">Short Name: </label> </td>
+                        <td class="col-sm-6"><form:input cssClass="form-control" path="shortName" id="shortName"/></td>
+                        <td><form:errors path="shortName" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
+                    </tr>
 
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
+                    <tr>
+                        <td style="line-height: 2" class="col-sm-2 control-label"><label for="notes">Notes: </label> </td>
+                        <td class="col-sm-6"><form:textarea cssClass="form-control" path="notes" id="notes" /></td>
+                        <td><form:errors path="notes" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
+                    </tr>
 
-                            <form:input cssClass="form-control"  path="name" id="name"/>
-                            <form:errors path="name" cssClass="error"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="shortName" class="col-sm-2 control-label">Short Name</label>
-                        <div class="col-sm-10">
-
-                            <form:input cssClass="form-control" path="shortName" id="short_name"/>
-                            <form:errors path="shortName" cssClass="error"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="notes" class="col-sm-2 control-label">Notes</label>
-                        <div class="col-sm-10">
-
-                            <form:textarea cssClass="form-control" path="notes" id="notes"/>
-                            <form:errors path="notes" cssClass="error"/>
-                        </div>
-                    </div>
-                    <div>
-                        <c:choose>
-                            <c:when test="${edit}">
-                                <input type="submit" class="btn btn-primary" value="Update"/>
-                            </c:when>
-                            <c:otherwise>
-                                <input type="submit"class="btn btn-primary"  value="Register"/>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                </form>
-
+                    <tr>
+                        <td colspan="3">
+                            <c:choose>
+                                <c:when test="${edit}">
+                                    <input type="submit" class="btn btn-primary" value="Update"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <input type="submit" class="btn btn-primary" value="Register"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                    </tr>
+                </table>
             </form:form>
             <br/>
             <br/>
