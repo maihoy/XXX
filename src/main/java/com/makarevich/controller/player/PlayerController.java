@@ -1,4 +1,5 @@
 package com.makarevich.controller.player;
+import com.makarevich.controller.IndexController;
 import com.makarevich.service.front.player.PlayerService;
 import com.makarevich.service.front.player.dto.PlayerDTO;
 import com.makarevich.service.front.team.TeamService;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/player")
-public class PlayerController {
+public class PlayerController extends IndexController{
     @Autowired
     PlayerService service;
 
@@ -31,6 +32,7 @@ public class PlayerController {
 
         List<PlayerDTO> players = service.findAllPlayers();
         model.addAttribute("players", players);
+        model.addAttribute("user",getPrincipal());
         return "player/list";
     }
 

@@ -25,14 +25,14 @@ public class IndexController {
         return "home";
     }
 
-    private String getPrincipal(){
+    protected String getPrincipal(){
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof UserDetails) {
             userName = ((UserDetails)principal).getUsername();
-           // UserDTO user = userService.findByEmail(userName);
-           // userName= user.getFirstName()+' '+user.getLastName();
+            UserDTO user = userService.findByEmail(userName);
+            userName= user.getFirstName()+' '+user.getLastName();
         } else {
             userName = principal.toString();
         }

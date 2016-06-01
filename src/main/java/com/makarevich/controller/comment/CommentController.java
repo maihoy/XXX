@@ -1,6 +1,7 @@
 package com.makarevich.controller.comment;
 
 
+import com.makarevich.controller.IndexController;
 import com.makarevich.service.front.comment.CommentService;
 import com.makarevich.service.front.comment.dto.CommentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/comment")
 
-public class CommentController {
+public class CommentController extends IndexController {
 
     @Autowired
     CommentService service;
@@ -32,6 +33,7 @@ public class CommentController {
 
         List<CommentDTO> comments = service.findAllComments();
         model.addAttribute("comments", comments);
+        model.addAttribute("user",getPrincipal());
         return "comment/list";
     }
 

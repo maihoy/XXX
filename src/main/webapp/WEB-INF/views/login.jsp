@@ -28,13 +28,13 @@
 			<div class="form-group">
                 <label class="sr-only " for="inputEmail">Email address</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" id="inputEmail" placeholder="Email" required="" autofocus="">
+					<input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" required="" autofocus="">
 				</div>
 			</div>
 			<div class="form-group">
                 <label class="sr-only " for="inputEmail">Password</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" id="inputPassword" placeholder="Password" required="">
+					<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required="">
 				</div>
 			</div>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

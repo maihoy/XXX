@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.makarevich.dao.user.UserDao;
 import com.makarevich.dao.user.model.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService{
@@ -44,5 +47,27 @@ public class UserServiceImpl implements UserService{
 		User user = dao.findByEmail(email);
 		return userConverter.convertToFront(user);
 	}
-	
+
+	public void updateUser(UserDTO user) {
+		User entity = dao.findById(user.getId());
+		if(entity!=null){
+			userConverter.convertToLocal(user, entity);
+		}
+	}
+
+	public void deleteUserById(Long id) {
+		dao.deleteUserById(id);
+	}
+
+	public List<UserDTO> findAllUsers() {
+		List<User> users = dao.findAllUsers();
+		List<UserDTO> result = new ArrayList<UserDTO>(users.size());
+		for (User user : users) {
+			result.add(userConverter.convertToFront(user));
+		}
+
+		return result;
+	}
+
+
 }

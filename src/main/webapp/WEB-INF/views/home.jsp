@@ -11,18 +11,7 @@
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
     </head>
     <body>
-        <div class="mainWrapper">
-            <div class="login-block">
-                <div class="user">${user}</div>
-                <div class="login">
-                    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-                        <label><a href="<c:url value='/logout' />">logout</a></label>
-                    </sec:authorize>
-                    <sec:authorize access="isAnonymous()">
-                        <label><a href="<c:url value='/login'/>">login </a> </label>
-                    </sec:authorize>
-                </div>
-            </div>
+
 
             <nav class="navbar navbar-inverse navbar-fixed-top">
 
@@ -43,7 +32,7 @@
                                 <li><a href="<c:url value='/player/list' />">List of Players</a></li>
                                 <li><a href="<c:url value='/comment/list' />">Comments</a></li>
                                 <sec:authorize access="hasRole('ADMIN')">
-                                     <li><a href="#">List of Users</a></li>
+                                     <li><a href="<c:url value='/user/list' />">List of Users</a></li>
                                 </sec:authorize>
                             </ul>
                         <ul class="nav navbar-nav navbar-right">

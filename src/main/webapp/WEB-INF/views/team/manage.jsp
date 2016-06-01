@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
 <head>
@@ -32,7 +31,7 @@
                         <li><a href="<c:url value='/player/list' />">List of Players</a></li>
                         <li><a href="<c:url value='/comment/list' />">Comments</a></li>
                         <sec:authorize access="hasRole('ADMIN')">
-                            <li><a href="#">List of Users</a></li>
+                            <li><a href="<c:url value='/user/list' />">List of Users</a></li>
                         </sec:authorize>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

@@ -39,7 +39,7 @@ public class LoginController {
     @Autowired
     MessageSource messageSource;
 
-
+/**
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
@@ -51,7 +51,7 @@ public class LoginController {
         model.addAttribute("user", getPrincipal());
         return "accessDenied";
     }
-
+*/
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
         return "login";
@@ -66,7 +66,7 @@ public class LoginController {
         return "redirect:/login?logout";
     }
 
-
+/**
     @RequestMapping(value = "/newUser", method = RequestMethod.GET)
     public String newRegistration(ModelMap model) {
         UserDTO user = new UserDTO();
@@ -99,7 +99,7 @@ public class LoginController {
         }
         return userName;
     }
-
+*/
     @ModelAttribute("roles")
     public List<UserRoleDTO> initializeProfiles() {
         return userRoleService.findAll();

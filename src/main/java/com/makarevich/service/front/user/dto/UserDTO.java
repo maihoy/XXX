@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 public class UserDTO {
@@ -31,8 +32,7 @@ public class UserDTO {
 //    @Size(min= 1, max = 45)
     private String state;
 
-    private Set<UserRoleDTO> roles;
-
+    private Set<UserRoleDTO> roles= new HashSet<UserRoleDTO>();
     public UserDTO() {
     }
 
@@ -83,4 +83,6 @@ public class UserDTO {
     public void setRoles(Set<UserRoleDTO> roles) {
         this.roles = roles;
     }
+
+
 }
