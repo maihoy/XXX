@@ -8,10 +8,6 @@ import com.makarevich.service.front.player.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- * User: svetlana.voyteh
- * Date: 14.04.2016
- */
 @Component
 public class PlayerConverter implements Converter<Player, PlayerDTO> {
 

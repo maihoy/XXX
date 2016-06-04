@@ -1,9 +1,14 @@
 package com.makarevich.controller.team;
 
 
+import com.makarevich.controller.IndexController;
 import com.makarevich.service.front.team.dto.TeamDTO;
+import com.makarevich.service.front.user.UserService;
+import com.makarevich.service.front.user.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,12 +23,15 @@ import com.makarevich.service.front.team.TeamService;
 @Controller
 @RequestMapping("/team")
 
-public class TeamController {
+public class TeamController extends IndexController{
     @Autowired
     TeamService service;
 
     @Autowired
     MessageSource messageSource;
+
+    @Autowired
+    UserService userService;
 
 
     @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
@@ -31,6 +39,7 @@ public class TeamController {
 
         List<TeamDTO> teams = service.findAllTeams();
         model.addAttribute("teams", teams);
+        model.addAttribute("user",getPrincipal());
         return "team/list";
     }
 
@@ -87,4 +96,6 @@ public class TeamController {
         service.deleteTeamById(id);
         return "redirect:/team/list";
     }
+
+
 }

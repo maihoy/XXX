@@ -61,3 +61,8 @@ a{
 a:visited{
     color: inherit;
 }
+
+.login-block {
+    margin-top: 10px;
+}
+

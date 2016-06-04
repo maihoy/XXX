@@ -5,10 +5,6 @@ import com.makarevich.dao.team.model.Team;
 import com.makarevich.service.front.team.dto.TeamDTO;
 import org.springframework.stereotype.Component;
 
-/**
- * User: svetlana.voyteh
- * Date: 12.04.2016
- */
 @Component
 public class TeamConverter implements Converter<Team, TeamDTO> {
 
