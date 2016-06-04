@@ -3,6 +3,8 @@ package com.makarevich.controller.user;
 import com.makarevich.controller.IndexController;
 import com.makarevich.service.front.user.UserService;
 import com.makarevich.service.front.user.dto.UserDTO;
+import com.makarevich.service.front.userrole.UserRoleService;
+import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class UserController extends IndexController {
 
     @Autowired
     MessageSource messageSource;
+
+    @Autowired
+    UserRoleService userRoleService;
 
     @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
@@ -87,4 +92,10 @@ public class UserController extends IndexController {
         service.deleteUserById(id);
         return "redirect:/user/list";
     }
+
+    @ModelAttribute("roles")
+    public List<UserRoleDTO> initializeProfiles() {
+        return userRoleService.findAll();
+    }
+
 }
