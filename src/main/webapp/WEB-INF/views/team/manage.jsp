@@ -54,6 +54,8 @@
 
             <form:form method="POST" modelAttribute="team">
                 <form:input type="hidden" path="id" id="id"/>
+                <form:input type="hidden" path="creator" id="creator"/>
+                ${signedId}
                 <table class=" table">
                     <tr>
                         <td style="line-height: 2" class="col-sm-2 control-label"><label for="name">Name: </label> </td>
@@ -72,6 +74,7 @@
                         <td class="col-sm-6"><form:textarea cssClass="form-control" path="notes" id="notes" /></td>
                         <td><form:errors path="notes" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                     </tr>
+
 
                     <tr>
                         <td colspan="3">

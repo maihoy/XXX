@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository("teamDao")
 
 public class TeamDaoImpl extends AbstractDao<Long, Team> implements TeamDao {
-    public Team findById(Long id) { return getByKey(id); }
+   // public Team findById(Long id) { return getByKey(id); }
 
     public void saveTeam(Team team) {
         persist(team);

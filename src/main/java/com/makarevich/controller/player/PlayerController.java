@@ -63,7 +63,7 @@ public class PlayerController extends IndexController{
 
     @RequestMapping(value = { "/edit-{id}-player" }, method = RequestMethod.GET)
     public String editPlayer(@PathVariable Long id, ModelMap model) {
-        PlayerDTO player = service.findById(id);
+        PlayerDTO player = service.findPlayerById(id);
         model.addAttribute("player", player);
         model.addAttribute("edit", true);
         return "player/manage";

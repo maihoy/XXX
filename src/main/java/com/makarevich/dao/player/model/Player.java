@@ -23,6 +23,9 @@ public class Player {
         @Column(name = "surname", nullable = false)
         private String surname;
 
+        @Column(name = "email", nullable = false)
+        private String email;
+
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "team")
         private Team team;
@@ -49,6 +52,14 @@ public class Player {
             this.surname = surname;
         }
 
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
         public Team getTeam() {   return team;     }
 
         public void setTeam(Team team) {   this.team = team;     }
@@ -72,4 +83,7 @@ public class Player {
             return "Player [id=" + id + ", name=" + name + ", surname="
                     + surname + ", team=" + team +"]";
         }
-    }
+
+
+
+}

@@ -19,7 +19,7 @@ public class PlayerConverter implements Converter<Player, PlayerDTO> {
         dto.setId(player.getId());
         dto.setName(player.getName());
         dto.setSurname(player.getSurname());
-
+        dto.setEmail(player.getEmail());
         Team team = player.getTeam();
         dto.setTeam(team.getId());
         dto.setTeamName(team.getName());
@@ -30,7 +30,8 @@ public class PlayerConverter implements Converter<Player, PlayerDTO> {
     public Player convertToLocal(PlayerDTO playerDTO, Player player) {
         player.setName(playerDTO.getName());
         player.setSurname(playerDTO.getSurname());
-        player.setTeam(teamDao.findById(playerDTO.getTeam()));
+        player.setEmail(playerDTO.getEmail());
+        player.setTeam(teamDao.findTeamById(playerDTO.getTeam()));
         return player;
     }
 }

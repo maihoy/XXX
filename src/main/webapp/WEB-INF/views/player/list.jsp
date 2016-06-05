@@ -53,7 +53,10 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Name</th><th>Surname</th><th>Team</th><th></th><th></th>
+                <th>Name</th><th>Surname</th><th>Team</th><th>Email</th>
+                <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                <th></th><th></th>
+                </sec:authorize>
             </tr>
             </thead>
             <tbody>
@@ -62,15 +65,20 @@
                     <td>${player.name}</td>
                     <td>${player.surname}</td>
                     <td>${player.teamName}</td>
+                    <td>${player.email}</td>
+                    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                     <td><input class="btn btn-warning btn-xs" value="Edit" onclick="location.href='edit-${player.id}-player'" type="button" /></td>
                     <td><input class="btn btn-danger btn-xs" value="Delete" onclick="location.href='delete-${player.id}-player'" type="button" /></td>
+                    </sec:authorize>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
     <br/>
+    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
     <input class="btn btn-primary" value="Add New Player" onclick="location.href='new'" type="button" />
+    </sec:authorize>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -19,14 +19,14 @@ public class TeamServiceImpl implements TeamService {
     @Autowired
     private TeamConverter teamConverter;
 
-    public TeamDTO findById(Long id) {
-        Team team = dao.findById(id);
+    public TeamDTO findTeamById(Long id) {
+        Team team = dao.findTeamById(id);
         return teamConverter.convertToFront(team);
     }
 
     public void saveTeam(TeamDTO team) {
         if (team.getId() != null){
-            Team entity = dao.findById(team.getId());
+            Team entity = dao.findTeamById(team.getId());
             dao.saveTeam(teamConverter.convertToLocal(team, entity));
         }  else {
             dao.saveTeam(teamConverter.convertToLocal(team, new Team()));
@@ -35,7 +35,7 @@ public class TeamServiceImpl implements TeamService {
 
 
     public void updateTeam(TeamDTO team) {
-        Team entity = dao.findById(team.getId());
+        Team entity = dao.findTeamById(team.getId());
         if(entity!=null){
             teamConverter.convertToLocal(team, entity);
         }

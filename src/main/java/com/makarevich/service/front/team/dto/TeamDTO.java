@@ -15,6 +15,7 @@ public class TeamDTO {
     @NotNull
     @Size(min= 1, max = 250)
     private String notes;
+    private Long creator;
 
     public TeamDTO() {
     }
@@ -49,5 +50,13 @@ public class TeamDTO {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Long getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Long creator) {
+        this.creator = creator;
     }
 }

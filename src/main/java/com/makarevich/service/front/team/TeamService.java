@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface TeamService {
-    TeamDTO findById(Long id);
+    TeamDTO findTeamById(Long id);
 
     void saveTeam(TeamDTO team);
 

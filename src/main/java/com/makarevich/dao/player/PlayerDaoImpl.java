@@ -12,7 +12,6 @@ import java.util.List;
 @Repository("playerDao")
 
 public class PlayerDaoImpl extends AbstractDao<Long, Player> implements PlayerDao {
-    public Player findById(Long id) { return getByKey(id); }
 
     public void savePlayer(Player player) {
         persist(player);

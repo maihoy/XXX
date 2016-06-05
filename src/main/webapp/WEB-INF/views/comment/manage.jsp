@@ -23,11 +23,11 @@
         <h2>Comment Creation Form</h2>
 
         <form:form method="POST" modelAttribute="comment">
-            <form:input type="hidden" path="id" id="id"/>
+            <form:input type="hidden"  path="id" id="id"/>
             <table>
                 <tr>
                     <td><label for="text">Text: </label> </td>
-                    <td><form:textarea path="text" id="text"/></td>
+                    <td><form:textarea  path="text" id="text"/></td>
                     <td><form:errors path="text" cssClass="error"/></td>
                 </tr>
                 <tr>

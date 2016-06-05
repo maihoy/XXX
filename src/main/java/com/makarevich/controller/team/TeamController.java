@@ -47,8 +47,11 @@ public class TeamController extends IndexController{
     @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
     public String newTeam(ModelMap model) {
         TeamDTO team = new TeamDTO();
+        team.setCreator(getSignedId());
         model.addAttribute("team", team);
         model.addAttribute("edit", false);
+        model.addAttribute("user",getPrincipal());
+        //model.addAttribute("signedId", getSignedId());
         return "team/manage";
     }
 
@@ -70,9 +73,10 @@ public class TeamController extends IndexController{
 
     @RequestMapping(value = { "/edit-{id}-team" }, method = RequestMethod.GET)
     public String editTeam(@PathVariable Long id, ModelMap model) {
-        TeamDTO team = service.findById(id);
+        TeamDTO team = service.findTeamById(id);
         model.addAttribute("team", team);
         model.addAttribute("edit", true);
+        model.addAttribute("user",getPrincipal());
         return "team/manage";
     }
 
