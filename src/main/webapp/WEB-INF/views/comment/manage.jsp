@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Comment Creation Form</title>
-    <link href="<c:url value='/static/css/index.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/css/comment.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
 
 </head>

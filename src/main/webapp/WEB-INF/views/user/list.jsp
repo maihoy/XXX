@@ -53,7 +53,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>First name</th><th>Last name</th><th>Email</th><th>Password</th><th>State</th><th></th><th></th>
+                <th>First name</th><th>Last name</th><th>Email</th><th>State</th><th></th><th></th>
             </tr>
             </thead>
             <tbody>
@@ -62,7 +62,6 @@
                     <td>${user.firstName}</td>
                     <td>${user.lastName}</td>
                     <td>${user.email}</td>
-                    <td>${user.password}</td>
                     <td>${user.state}</td>
                     <td><input class="btn btn-warning btn-xs" value="Edit" onclick="location.href='edit-${user.id}-user'" type="button" /></td>
                     <td><input class="btn btn-danger btn-xs" value="Delete" onclick="location.href='delete-${user.id}-user'" type="button" /></td>

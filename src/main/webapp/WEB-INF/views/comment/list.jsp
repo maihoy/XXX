@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/css/comment.css' />" rel="stylesheet">
     <title>Comments</title>
 </head>
 
@@ -49,17 +50,34 @@
             </div>
         </div>
     </nav>
-        <h2>List of Comments</h2>
-        <table class="table-list">
-             <c:forEach items="${comments}" var="comment">
-                  <tr>
-                      <td>${comment.text}</td>
-                      <td><a href="<c:url value='delete-${comment.id}-comment' />">delete</a></td>
-                  </tr>
-             </c:forEach>
-        </table>
-        <br/>
-        <a href="<c:url value='new' />">Add New Comment</a>
+    <div class="container bootstrap snippet">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-comment">
+                    <h3 class="text-success">Comments</h3>
+                    <hr/>
+    <ul class="comments">
+        <c:forEach items="${comments}" var="comment">
+        <li class="clearfix">
+            <div class="post-comments">
+                <p class="meta">Dec 18, 2014 <a href="#">JohnDoe</a> says : <i class="pull-right"><a href="#">
+                    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                    <small><a href="<c:url value='delete-${comment.id}-comment' />">delete</a></small>
+                    </sec:authorize>
+                </a></i>
+                </p>
+                <p>${comment.text}</p>
+            </div>
+        </li>
+        </c:forEach>
+    </ul>
+                    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                        <input class="btn btn-primary" value="Add New Comment" onclick="location.href='new'" type="button" />
+                    </sec:authorize>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 </body>
 </html>
