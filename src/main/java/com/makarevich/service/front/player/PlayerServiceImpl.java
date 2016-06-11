@@ -20,14 +20,14 @@ public class PlayerServiceImpl implements PlayerService{
     @Autowired
     private PlayerConverter playerConverter;
 
-    public PlayerDTO findById(Long id) {
-        Player player = dao.findById(id);
+    public PlayerDTO findPlayerById(Long id) {
+        Player player = dao.findPlayerById(id);
         return playerConverter.convertToFront(player);
     }
 
     public void savePlayer(PlayerDTO player) {
         if(player.getId() != null){
-            Player entity = dao.findById(player.getId());
+            Player entity = dao.findPlayerById(player.getId());
             dao.savePlayer(playerConverter.convertToLocal(player, entity));
         } else {
             dao.savePlayer(playerConverter.convertToLocal(player, new Player()));
@@ -36,7 +36,7 @@ public class PlayerServiceImpl implements PlayerService{
 
 
     public void updatePlayer(PlayerDTO player) {
-        Player entity = dao.findById(player.getId());
+        Player entity = dao.findPlayerById(player.getId());
         if(entity!=null){
             playerConverter.convertToLocal(player, entity);
         }

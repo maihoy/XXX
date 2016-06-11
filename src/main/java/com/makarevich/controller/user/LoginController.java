@@ -100,38 +100,5 @@ public class LoginController {
         return userName;
     }
 */
-    @ModelAttribute("roles")
-    public List<UserRoleDTO> initializeProfiles() {
-        return userRoleService.findAll();
-    }
 
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Set.class, "roles", new CustomCollectionEditor(Set.class)
-        {
-            @Override
-            protected Object convertElement(Object element)
-            {
-                Long id = null;
-
-                if(element instanceof String && !((String)element).equals("")){
-                    //From the JSP 'element' will be a String
-                    try{
-                        id = Long.parseLong((String) element);
-                    }
-                    catch (NumberFormatException e) {
-                        System.out.println("Element was " + ((String) element));
-                        e.printStackTrace();
-                    }
-                }
-
-                else if(element instanceof Long) {
-                    //From the database 'element' will be a Long
-                    id = (Long) element;
-                }
-
-                return id != null ? userRoleService.findById(id) : null;
-            }
-        });
-    }
 }

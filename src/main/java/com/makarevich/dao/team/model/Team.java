@@ -27,6 +27,8 @@ public class Team {
     @Column(name = "notes", nullable = true)
     private String notes;
 
+    @Column(name="creator", nullable=false)
+    private Long creator;
 
     public Long getId() {
         return id;
@@ -58,7 +60,13 @@ public class Team {
         this.notes = notes;
     }
 
+    public Long getCreator() {
+        return creator;
+    }
 
+    public void setCreator(Long creator) {
+        this.creator = creator;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -77,6 +85,6 @@ public class Team {
     @Override
     public String toString() {
         return "Team [id=" + id + ", name=" + name + ", shortName="
-                + shortName + ", notes=" + "]";
+                + shortName + ", notes=" + notes+"]";
     }
 }

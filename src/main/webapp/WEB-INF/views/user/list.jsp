@@ -8,6 +8,12 @@
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
     <title>List Of Users</title>
+    <style>
+        .navbar-form{
+            padding-top: 2px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -33,6 +39,11 @@
                         <li class="active"><a href="<c:url value='/user/list' />">List of Users</a></li>
                     </sec:authorize>
                 </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="search" class="form-control light-table-filter input-sm" data-table="filtered" placeholder="Search">
+                    </div>
+                </form>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                         <li><p class="navbar-text">Signed in as ${currentUser}</p></li>
@@ -50,10 +61,10 @@
 
     <h2>List of Players</h2>
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover filtered sortable" id="sortabletable">
             <thead>
             <tr>
-                <th>First name</th><th>Last name</th><th>Email</th><th>Password</th><th>State</th><th></th><th></th>
+                <th>First name</th><th>Last name</th><th>Email</th><th>State</th><th  class="unsortable"></th><th  class="unsortable"></th>
             </tr>
             </thead>
             <tbody>
@@ -62,7 +73,6 @@
                     <td>${user.firstName}</td>
                     <td>${user.lastName}</td>
                     <td>${user.email}</td>
-                    <td>${user.password}</td>
                     <td>${user.state}</td>
                     <td><input class="btn btn-warning btn-xs" value="Edit" onclick="location.href='edit-${user.id}-user'" type="button" /></td>
                     <td><input class="btn btn-danger btn-xs" value="Delete" onclick="location.href='delete-${user.id}-user'" type="button" /></td>
@@ -79,5 +89,7 @@
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/filter.js"></script>
+<script src="/static/js/sortable.js"></script>
 </body>
 </html>

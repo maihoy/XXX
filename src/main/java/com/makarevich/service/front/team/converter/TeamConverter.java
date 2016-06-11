@@ -15,6 +15,7 @@ public class TeamConverter implements Converter<Team, TeamDTO> {
         teamDTO.setName(team.getName());
         teamDTO.setShortName(team.getShortName());
         teamDTO.setNotes(team.getNotes());
+        teamDTO.setCreator(team.getCreator());
 
         return teamDTO;
     }
@@ -23,6 +24,7 @@ public class TeamConverter implements Converter<Team, TeamDTO> {
         team.setName(dto.getName());
         team.setShortName(dto.getShortName());
         team.setNotes(dto.getNotes());
+        team.setCreator(dto.getCreator());
 
         return team;
     }

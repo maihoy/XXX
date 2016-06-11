@@ -6,7 +6,7 @@ import com.makarevich.service.front.player.dto.PlayerDTO;
 import java.util.List;
 
 public interface PlayerService {
-    PlayerDTO findById(Long id);
+    PlayerDTO findPlayerById(Long id);
 
     void savePlayer(PlayerDTO player);
 

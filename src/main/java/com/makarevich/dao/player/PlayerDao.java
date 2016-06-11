@@ -9,5 +9,6 @@ public interface PlayerDao {
     void savePlayer(Player player);
     void deletePlayerById(Long id);
     List<Player> findAllPlayers();
-    Player findById(Long id);
+    Player findPlayerById(Long id);
+    
 }

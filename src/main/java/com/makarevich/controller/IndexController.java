@@ -39,4 +39,21 @@ public class IndexController {
         return userName;
     }
 
+    protected Long getSignedId(){
+        Long signedId = null;
+        String usr = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            usr = ((UserDetails)principal).getUsername();
+            UserDTO user = userService.findByEmail(usr);
+            signedId= user.getId();
+        } else {
+            usr = principal.toString();
+        }
+        return signedId;
+    }
+
+
+
 }

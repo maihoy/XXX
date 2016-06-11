@@ -9,5 +9,6 @@ public interface TeamDao {
     void saveTeam(Team team);
     void deleteTeamById(Long id);
     List<Team> findAllTeams();
-    Team findById(Long id);
+    Team findTeamById(Long id);
+    List<Team> findTeamByCreator(Long id);
 }

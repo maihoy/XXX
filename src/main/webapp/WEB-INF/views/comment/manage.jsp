@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Comment Creation Form</title>
-    <link href="<c:url value='/static/css/index.css' />" rel="stylesheet">
+    <link href="<c:url value='/static/css/comment.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
 
 </head>
@@ -23,11 +23,11 @@
         <h2>Comment Creation Form</h2>
 
         <form:form method="POST" modelAttribute="comment">
-            <form:input type="hidden" path="id" id="id"/>
+            <form:input type="hidden"  path="id" id="id"/>
             <table>
                 <tr>
                     <td><label for="text">Text: </label> </td>
-                    <td><form:textarea path="text" id="text"/></td>
+                    <td><form:textarea  path="text" id="text"/></td>
                     <td><form:errors path="text" cssClass="error"/></td>
                 </tr>
                 <tr>

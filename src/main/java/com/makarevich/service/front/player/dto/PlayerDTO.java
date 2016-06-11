@@ -1,6 +1,8 @@
 package com.makarevich.service.front.player.dto;
 
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,6 +17,11 @@ public class PlayerDTO {
     @NotNull
     @Size(min= 1, max = 150)
     private String surname;
+
+    @NotNull
+    @Email
+    @Size(min= 1, max = 45)
+    private String email;
 
     private Long team;
 
@@ -39,13 +46,13 @@ public class PlayerDTO {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
+    public String getEmail (){return email;}
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+    public void setEmail(String email){ this.email= email;}
+
+    public String getSurname() {        return surname;    }
+
+    public void setSurname(String surname) {        this.surname = surname;    }
 
     public Long getTeam() {
         return team;
