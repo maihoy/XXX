@@ -35,4 +35,11 @@ public class TeamDaoImpl extends AbstractDao<Long, Team> implements TeamDao {
         criteria.add(Restrictions.eq("id", id));
         return (Team) criteria.uniqueResult();
     }
+
+    @SuppressWarnings("unchecked")
+    public List<Team> findTeamByCreator(Long id) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("id", id));
+        return (List<Team>) criteria.uniqueResult();
+    }
 }

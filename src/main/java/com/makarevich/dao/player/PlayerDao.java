@@ -10,4 +10,5 @@ public interface PlayerDao {
     void deletePlayerById(Long id);
     List<Player> findAllPlayers();
     Player findPlayerById(Long id);
+    
 }

@@ -17,4 +17,6 @@ public interface TeamService {
 
     List<TeamDTO> findAllTeams();
 
+    List<TeamDTO> findTeamByCreator(Long id);
+
 }

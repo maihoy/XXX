@@ -54,7 +54,7 @@
 
             <form:form method="POST" modelAttribute="team">
                 <form:input type="hidden" path="id" id="id"/>
-                <form:input type="hidden" path="creator" id="creator"/>
+                <form:input type="hidden" path="creator" id="creator" />
                 ${signedId}
                 <table class=" table">
                     <tr>

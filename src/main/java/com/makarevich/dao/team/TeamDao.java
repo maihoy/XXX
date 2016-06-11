@@ -10,4 +10,5 @@ public interface TeamDao {
     void deleteTeamById(Long id);
     List<Team> findAllTeams();
     Team findTeamById(Long id);
+    List<Team> findTeamByCreator(Long id);
 }

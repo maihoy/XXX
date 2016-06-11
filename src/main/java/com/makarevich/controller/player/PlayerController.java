@@ -42,6 +42,7 @@ public class PlayerController extends IndexController{
         PlayerDTO player = new PlayerDTO();
         model.addAttribute("player", player);
         model.addAttribute("edit", false);
+        model.addAttribute("user",getPrincipal());
         return "player/manage";
     }
 
@@ -66,6 +67,7 @@ public class PlayerController extends IndexController{
         PlayerDTO player = service.findPlayerById(id);
         model.addAttribute("player", player);
         model.addAttribute("edit", true);
+        model.addAttribute("user",getPrincipal());
         return "player/manage";
     }
 
@@ -94,5 +96,8 @@ public class PlayerController extends IndexController{
     public  List<TeamDTO> initializeProfiles(){
         return teamService.findAllTeams();
     }
+
+    //@ModelAttribute("teamsByCreator")
+//    public  List<TeamDTO>  initializeProfile(){ return teamService.findTeamByCreator(getSignedId());  }
 
 }

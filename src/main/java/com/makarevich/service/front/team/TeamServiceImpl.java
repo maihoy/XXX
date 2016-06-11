@@ -54,5 +54,16 @@ public class TeamServiceImpl implements TeamService {
         return result;
     }
 
+    public List<TeamDTO> findTeamByCreator(Long id) {
+
+            List<Team> teams = dao.findTeamByCreator(id);
+            List<TeamDTO> result = new ArrayList<TeamDTO>(teams.size());
+            for (Team team : teams) {
+                result.add(teamConverter.convertToFront(team));
+            }
+            return result;
+
+    }
+
 
 }

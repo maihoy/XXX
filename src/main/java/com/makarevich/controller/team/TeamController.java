@@ -51,7 +51,6 @@ public class TeamController extends IndexController{
         model.addAttribute("team", team);
         model.addAttribute("edit", false);
         model.addAttribute("user",getPrincipal());
-        //model.addAttribute("signedId", getSignedId());
         return "team/manage";
     }
 

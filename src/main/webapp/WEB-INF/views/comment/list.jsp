@@ -2,6 +2,7 @@
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -73,11 +74,49 @@
     </ul>
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                         <input class="btn btn-primary" value="Add New Comment" onclick="location.href='new'" type="button" />
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal </button>
                     </sec:authorize>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                                </div>
+                                <div class="modal-body">
+                                     <form>
+
+                                            <table>
+                                                <tr>
+                                                    <td><label for="text">Text: </label> </td>
+                                                    <td><textarea></textarea></td>
+                                                    <td>></td>
+                                                </tr>
+                                                <tr>
+
+                                                </tr>
+                                            </table>
+                                        </form>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Send message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
 </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/filter.js"></script>
+<script src="/static/js/sortable.js"></script>
 </body>
 </html>

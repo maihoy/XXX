@@ -9,6 +9,12 @@
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
     <title>List Of Teams</title>
+    <style>
+        .navbar-form{
+            padding-top: 2px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -34,6 +40,11 @@
                         <li><a href="<c:url value='/user/list' />">List of Users</a></li>
                     </sec:authorize>
                 </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="search" class="form-control light-table-filter input-sm" data-table="filtered" placeholder="Search">
+                    </div>
+                </form>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                         <li><p class="navbar-text">Signed in as ${user}</p></li>
@@ -51,12 +62,12 @@
 
     <h2>List of Teams</h2>
     <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-hover filtered sortable" id="sortabletable">
             <thead>
                 <tr>
-                    <th>Name</th><th>Short Name</th><th>Notes</th>
+                    <th>Name</th><th>Short Name</th><th class="unsortable">Notes</th>
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-                    <th></th><th></th>
+                    <th class="unsortable"></th><th class="unsortable"></th>
                     </sec:authorize>
                 </tr>
             </thead>
@@ -76,7 +87,7 @@
         </table>
     </div>
     <br/>
-    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+    <sec:authorize access="hasRole('USER')">
     <input class="btn btn-primary" value="Add New Team" onclick="location.href='new'" type="button" />
     </sec:authorize>
 </div>
@@ -85,5 +96,7 @@
 <script src="/static/js/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/filter.js"></script>
+<script src="/static/js/sortable.js"></script>
 </body>
 </html>

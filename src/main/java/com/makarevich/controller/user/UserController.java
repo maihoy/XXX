@@ -6,16 +6,17 @@ import com.makarevich.service.front.user.dto.UserDTO;
 import com.makarevich.service.front.userrole.UserRoleService;
 import com.makarevich.service.front.userrole.dto.UserRoleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/user")
@@ -45,6 +46,7 @@ public class UserController extends IndexController {
         UserDTO user = new UserDTO();
         model.addAttribute("user", user);
         model.addAttribute("edit", false);
+        model.addAttribute("currentUser",getPrincipal());
         return "user/newuser";
     }
 
@@ -69,6 +71,7 @@ public class UserController extends IndexController {
         UserDTO user = service.findById(id);
         model.addAttribute("user", user);
         model.addAttribute("edit", true);
+        model.addAttribute("currentUser",getPrincipal());
         return "user/newuser";
     }
 
@@ -97,5 +100,31 @@ public class UserController extends IndexController {
     public List<UserRoleDTO> initializeProfiles() {
         return userRoleService.findAll();
     }
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Set.class, "roles", new CustomCollectionEditor(Set.class) {
+            @Override
+            protected Object convertElement(Object element) {
+                Long id = null;
+
+                if (element instanceof String && !((String) element).equals("")) {
+                    //From the JSP 'element' will be a String
+                    try {
+                        id = Long.parseLong((String) element);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Element was " + ((String) element));
+                        e.printStackTrace();
+                    }
+                } else if (element instanceof Long) {
+                    //From the database 'element' will be a Long
+                    id = (Long) element;
+                }
+
+                return id != null ? userRoleService.findById(id) : null;
+            }
+        });
+    }
+
 
 }

@@ -76,7 +76,7 @@
                 <tr>
                     <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Team: </label> </td>
                     <td class="col-sm-6"><form:select  path="team" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
-                    <td><form:errors path="team" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
+                   <td><form:errors path="team" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                 </tr>
 
                 <tr>
