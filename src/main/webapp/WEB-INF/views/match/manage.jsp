@@ -64,23 +64,21 @@
 <div class="container">
 <h2>Create Match</h2>
     <form:form method="POST" modelAttribute="match">
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Action</a></li>
-        </ul>
-    </div>
+    <form:input type="hidden" path="id" id="id"/>
 
-        <table>
-            <tr>
-                <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Team: </label> </td>
-                <td class="col-sm-6"><form:select  path="team" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
-                <td><form:errors path="team" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
-            </tr>
-        </table>
+
+
+
+            <table class=" table">
+                <tr>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда: </label> </td>
+                    <td class="col-sm-6"><form:select  path="myTeam" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
+                </tr>
+                <tr>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда: </label> </td>
+                    <td class="col-sm-6"><form:select  path="theirTeam" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
+                </tr>
+                </table>
     </form:form>
 </div>
 

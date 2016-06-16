@@ -39,6 +39,7 @@ public class MatchController extends IndexController {
 
         List<MatchDTO> matches = matchService.findAllMatches();
         model.addAttribute("matches", matches);
+        model.addAttribute("teams",teamService.findAllTeams());
         model.addAttribute("currentUser",getPrincipal());
         return "match/list";
     }
