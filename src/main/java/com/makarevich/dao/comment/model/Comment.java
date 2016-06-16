@@ -2,6 +2,7 @@ package com.makarevich.dao.comment.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 @Table(name="COMMENT")
@@ -13,6 +14,12 @@ public class Comment {
 
         @Column(name = "text", nullable = false)
         private String text;
+
+        @Column(name = "date", nullable = false)
+        private Date date;
+
+        @Column(name="creator", nullable=false)
+        private Long creator;
 
 
         public Long getId() {
@@ -30,6 +37,22 @@ public class Comment {
         public void setText(String text) {
             this.text = text;
         }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Long getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Long creator) {
+        this.creator = creator;
+    }
 
         @Override
         public boolean equals(Object obj) {

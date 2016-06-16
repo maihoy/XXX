@@ -3,16 +3,31 @@ package com.makarevich.dao.match.model;
 
 import com.makarevich.dao.team.model.Team;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
+@Table(name="MATCH")
 public class Match {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "myTeam")
     private Team myTeam;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "theirTeam")
     private Team theirTeam;
+
+    @Column(name = "date", nullable = false)
     private Date date;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="set")
     private List<Set> sets = new ArrayList<Set>();
 
     public Long getId() {
@@ -54,4 +69,6 @@ public class Match {
     public void setSets(List<Set> sets) {
         this.sets = sets;
     }
+
+
 }

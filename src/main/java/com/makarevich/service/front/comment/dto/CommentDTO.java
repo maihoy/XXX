@@ -3,6 +3,7 @@ package com.makarevich.service.front.comment.dto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 public class CommentDTO {
     private Long id;
@@ -11,6 +12,10 @@ public class CommentDTO {
     @Size(min = 1, max = 500)
     private String text;
 
+    @NotNull
+    private Date date;
+
+    private Long creator;
 
     public CommentDTO() {
     }
@@ -29,5 +34,21 @@ public class CommentDTO {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Long getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Long creator) {
+        this.creator = creator;
     }
 }

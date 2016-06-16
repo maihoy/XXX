@@ -31,6 +31,15 @@
                                 <li><a href="<c:url value='/team/list' />">List of Teams</a></li>
                                 <li><a href="<c:url value='/player/list' />">List of Players</a></li>
                                 <li><a href="<c:url value='/comment/list' />">Comments</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Match... <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Create</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">?</a></li>
+
+                                    </ul>
+                                </li>
                                 <sec:authorize access="hasRole('ADMIN')">
                                      <li><a href="<c:url value='/user/list' />">List of Users</a></li>
                                 </sec:authorize>

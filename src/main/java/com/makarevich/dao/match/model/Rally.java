@@ -1,14 +1,18 @@
 package com.makarevich.dao.match.model;
 
-
-import com.makarevich.dao.player.model.Player;
-
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="RALLY")
 public class Rally {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="rallyitem")
     private List<RallyItem> items = new ArrayList<RallyItem>();
 
     public Long getId() {

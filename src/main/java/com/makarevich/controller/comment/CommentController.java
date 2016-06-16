@@ -43,6 +43,7 @@ public class CommentController extends IndexController {
         CommentDTO comment = new CommentDTO();
         model.addAttribute("comment", comment);
         model.addAttribute("edit", false);
+        model.addAttribute("signedId",getSignedId());
         return "comment/manage";
     }
 

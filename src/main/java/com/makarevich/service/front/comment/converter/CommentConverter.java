@@ -8,9 +8,6 @@ import com.makarevich.service.front.comment.dto.CommentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by j on 18.4.16.
- */
 @Component
 public class CommentConverter implements Converter<Comment, CommentDTO> {
 
@@ -21,11 +18,15 @@ public class CommentConverter implements Converter<Comment, CommentDTO> {
             CommentDTO dto = new CommentDTO();
             dto.setId(comment.getId());
             dto.setText(comment.getText());
+            dto.setDate(comment.getDate());
+            dto.setCreator(comment.getCreator());
             return dto;
         }
 
         public Comment convertToLocal(CommentDTO commentDTO, Comment comment) {
             comment.setText(commentDTO.getText());
+            comment.setDate(commentDTO.getDate());
+            comment.setCreator(commentDTO.getCreator());
             return comment;
         }
     }

@@ -5,12 +5,30 @@ import com.makarevich.dao.actionresult.model.ActionResult;
 import com.makarevich.dao.player.model.Player;
 import com.makarevich.dao.subaction.model.SubAction;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="RALLYITEM")
 public class RallyItem {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player")
     private Player player;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "action")
     private Action action;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sub_action")
     private SubAction subAction;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "action_result")
     private ActionResult actionResult;
 
     public Long getId() {
