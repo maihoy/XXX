@@ -1,15 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=Windows-1251"
+         pageEncoding="Windows-1251"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
-    <title>Player Registration Form</title>
+    <title>Ñîçäàíèå èãðîêà</title>
 </head>
 <body>
 <div class="container">
@@ -22,27 +23,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<c:url value='/' />">Project name</a>
+                <a class="navbar-brand" href="<c:url value='/' />">VSA</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="<c:url value='/' />">Home<span class="sr-only">(current)</span></a></li>
-                    <li ><a href="<c:url value='/team/list' />">List of Teams</a></li>
-                    <li><a href="<c:url value='/player/list' />">List of Players</a></li>
-                    <li><a href="<c:url value='/comment/list' />">Comments</a></li>
+                    <li><a href="<c:url value='/' />">Ãëàâíàÿ<span class="sr-only">(current)</span></a></li>
+                    <li ><a href="<c:url value='/team/list' />">Êîìàíäû</a></li>
+                    <li><a href="<c:url value='/player/list' />">Èãðîêè</a></li>
+                    <li><a href="<c:url value='/comment/list' />">Êîììåíòàðèè</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ìàò÷è... <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<c:url value='/match/new' />">Ñîçäàòü</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Ñïèñîê ìàò÷åé</a></li>
+
+                        </ul>
+                    </li>
                     <sec:authorize access="hasRole('ADMIN')">
-                        <li><a href="<c:url value='/user/list' />">List of Users</a></li>
+                        <li><a href="<c:url value='/user/list' />">Ñïèñîê ïîëüçîâàòåëåé</a></li>
                     </sec:authorize>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-                        <li><p class="navbar-text">Signed in as ${user}</p></li>
+                        <li><p class="navbar-text">${user}</p></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-                        <li><a href="<c:url value='/logout' />">Sign out</a></li>
+                        <li><a href="<c:url value='/logout' />">Âûõîä</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAnonymous()">
-                        <li><a href="<c:url value='/login'/>">Sign in </a> </li>
+                        <li><a href="<c:url value='/login'/>">Âõîä </a> </li>
                     </sec:authorize>
                 </ul>
             </div>
@@ -50,31 +60,31 @@
     </nav>
 
     <div class="container " >
-        <h2>Player Registration Form</h2>
+        <h2>Ñîçäàíèå Èãðîêà</h2>
 
         <form:form method="POST" modelAttribute="player">
             <form:input type="hidden" path="id" id="id"/>
             <table class=" table">
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="name">Name: </label> </td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="name">Èìÿ: </label> </td>
                     <td class="col-sm-6"><form:input  cssClass="form-control" path="name" id="name"/></td>
                     <td ><form:errors path="name" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                 </tr>
 
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="surname">Surname: </label> </td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="surname">Ôàìèëèÿ: </label> </td>
                     <td class="col-sm-6"><form:input cssClass="form-control" path="surname" id="surname"/></td>
                     <td><form:errors path="surname" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                 </tr>
 
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="email">Email: </label> </td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="email">Ýë. àäðåñ: </label> </td>
                     <td class="col-sm-6"><form:input cssClass="form-control" path="email" id="email"/></td>
                     <td><form:errors path="email" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                 </tr>
 
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Team: </label> </td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Êîìàíäà: </label> </td>
                     <td class="col-sm-6"><form:select  path="team" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
                    <td><form:errors path="team" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                 </tr>
@@ -83,10 +93,10 @@
                     <td colspan="3">
                         <c:choose>
                             <c:when test="${edit}">
-                                <input type="submit" class="btn btn-primary" value="Update"/>
+                                <input type="submit" class="btn btn-primary" value="Îáíîâèòü"/>
                             </c:when>
                             <c:otherwise>
-                                <input type="submit" class="btn btn-primary" value="Register"/>
+                                <input type="submit" class="btn btn-primary" value="Ñîçäàòü"/>
                             </c:otherwise>
                         </c:choose>
                     </td>
@@ -95,7 +105,7 @@
         </form:form>
         <br/>
         <br/>
-        Go back to <a href="<c:url value='/player/list' />">List of All Players</a>
+        Âåðíóòüñÿ ê <a href="<c:url value='/player/list' />">Ñïèñêó âñåõ Èãðîêîâ</a>
     </div>
 </div>
 </body>

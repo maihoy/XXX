@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=Windows-1251"
+		 pageEncoding="Windows-1251"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sign in</title>
 		<link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
@@ -17,30 +18,30 @@
 		<form action="${loginUrl}" method="post" class="form-sigin">
 			<c:if test="${param.error != null}">
 				<div class="alert alert-danger">
-					<p>Invalid email and password.</p>
+					<p>Íåâåðíûé ïàðîëü è ýëåòðîííûé àäðåñ.</p>
 				</div>
 			</c:if>
 			<c:if test="${param.logout != null}">
 				<div class="alert alert-success">
-					<p>You have been logged out successfully.</p>
+					<p>Âû óñïåøíî âûøëè.</p>
 				</div>
 			</c:if>
 			<div class="form-group">
-                <label class="sr-only " for="inputEmail">Email address</label>
+                <label class="sr-only " for="inputEmail">Ýëåêðîííûé àäðåñ</label>
 				<div class="col-sm-10">
-					<input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" required="" autofocus="">
+					<input type="email" name="email" class="form-control" id="inputEmail" placeholder="Ýëåêòðîííûé ÿùèê" required="" autofocus="">
 				</div>
 			</div>
 			<div class="form-group">
-                <label class="sr-only " for="inputEmail">Password</label>
+                <label class="sr-only " for="inputEmail">Ïàðîëü</label>
 				<div class="col-sm-10">
-					<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required="">
+					<input type="password" name="password" class="form-control" id="inputPassword" placeholder="Ïàðîëü" required="">
 				</div>
 			</div>
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<div class="form-group">
 				<div class="col-sm-10">
-					<button type="submit" class="btn btn-block btn-primary">Sign in</button>
+					<button type="submit" class="btn btn-block btn-primary">Âõîä</button>
 				</div>
 			</div>
 		</form>

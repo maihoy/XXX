@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,16 +34,72 @@ public class MatchController extends IndexController {
         MessageSource messageSource;
 
 
-    @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
-    public String listPlayer(ModelMap model) {
+    @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
+    public String listMatches(ModelMap model) {
 
         List<MatchDTO> matches = matchService.findAllMatches();
         model.addAttribute("matches", matches);
-        model.addAttribute("user",getPrincipal());
+        model.addAttribute("currentUser",getPrincipal());
+        return "match/list";
+    }
+
+    @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
+    public String newMatch(ModelMap model) {
+        MatchDTO match = new MatchDTO();
+        model.addAttribute("match", match);
+        model.addAttribute("edit", false);
+        model.addAttribute("currentUser",getPrincipal());
         return "match/manage";
     }
 
-        @ModelAttribute("teams")
+
+    @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
+    public String saveMatch(@Valid @ModelAttribute("match") MatchDTO match, BindingResult result,
+                           ModelMap model) {
+
+        if (result.hasErrors()) {
+            return "match/manage";
+        }
+
+
+        matchService.saveMatch(match);
+        return "redirect:/match/list";
+    }
+
+
+
+    @RequestMapping(value = { "/edit-{id}-match" }, method = RequestMethod.GET)
+    public String editMatch(@PathVariable Long id, ModelMap model) {
+        MatchDTO match = matchService.findMatchById(id);
+        model.addAttribute("match", match);
+        model.addAttribute("edit", true);
+        model.addAttribute("currentUser",getPrincipal());
+        return "match/manage";
+    }
+
+
+    @RequestMapping(value = { "/edit-{id}-match" }, method = RequestMethod.POST)
+    public String updateMatch(@Valid @ModelAttribute("match") MatchDTO match, BindingResult result,
+                             ModelMap model, @PathVariable Long id) {
+
+        if (result.hasErrors()) {
+            return "match/manage";
+        }
+
+
+        matchService.updateMatch(match);
+        return "redirect:/match/list";
+    }
+
+
+    @RequestMapping(value = { "/delete-{id}-match" }, method = RequestMethod.GET)
+    public String deleteMatch(@PathVariable Long id) {
+        matchService.deleteMatchById(id);
+        return "redirect:/match/list";
+    }
+
+
+    @ModelAttribute("teams")
         public List<TeamDTO> initializeProfiles(){            return teamService.findAllTeams();        }
 
 

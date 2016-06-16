@@ -10,17 +10,17 @@ public class Set {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idSet;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="id", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idRally", fetch = FetchType.LAZY)
     private List<Rally> rallies = new ArrayList<Rally>();
 
     public Long getId() {
-        return id;
+        return idSet;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idSet) {
+        this.idSet = idSet;
     }
 
     public List<Rally> getRallies() {

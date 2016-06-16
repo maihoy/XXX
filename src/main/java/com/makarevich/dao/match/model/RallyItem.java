@@ -13,7 +13,7 @@ public class RallyItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idRItems;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "player")
@@ -32,11 +32,11 @@ public class RallyItem {
     private ActionResult actionResult;
 
     public Long getId() {
-        return id;
+        return idRItems;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idRItems) {
+        this.idRItems = idRItems;
     }
 
     public Player getPlayer() {

@@ -10,17 +10,17 @@ public class Rally {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idRally;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idRItems")
     private List<RallyItem> items = new ArrayList<RallyItem>();
 
     public Long getId() {
-        return id;
+        return idRally;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long idRally) {
+        this.idRally = idRally;
     }
 
     public List<RallyItem> getItems() {

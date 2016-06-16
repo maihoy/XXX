@@ -17,17 +17,17 @@ public class Match {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "myTeam")
+    @JoinColumn(name = "my_team")
     private Team myTeam;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "theirTeam")
+    @JoinColumn(name = "their_team")
     private Team theirTeam;
 
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="id", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idSet", fetch = FetchType.LAZY)
     private List<Set> sets = new ArrayList<Set>();
 
     public Long getId() {

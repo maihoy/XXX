@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=Windows-1251"
+         pageEncoding="Windows-1251"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Comment Creation Form</title>
+    <title>Íîâûé êîììåíòàðèé</title>
     <link href="<c:url value='/static/css/comment.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
 
@@ -46,7 +48,7 @@
         </form:form>
         <br/>
         <br/>
-        Go back to <a href="<c:url value='/comment/list' />">List of All Comments</a>
+        Âåðíóòüñÿ ê <a href="<c:url value='/comment/list' />">Êîììåíòàðèÿì</a>
     </div>
 </body>
 </html>
