@@ -3,6 +3,7 @@ package com.makarevich.service.front.match.converter;
 
 import com.makarevich.converter.Converter;
 import com.makarevich.dao.match.model.Match;
+import com.makarevich.dao.match.model.Set;
 import com.makarevich.dao.team.TeamDao;
 import com.makarevich.dao.team.model.Team;
 import com.makarevich.service.front.match.dto.MatchDTO;
@@ -16,6 +17,8 @@ public class MatchConverter implements Converter<Match, MatchDTO> {
 
     @Autowired
     private TeamDao teamDao;
+    @Autowired
+    private SetConverter setConverter;
 
     public MatchDTO convertToFront(Match match) {
         MatchDTO dto = new MatchDTO();
@@ -30,9 +33,9 @@ public class MatchConverter implements Converter<Match, MatchDTO> {
         dto.setTheirTeam(theirTeam.getId());
         dto.setTheirTeamName(theirTeam.getName());
 
-      //  for (  : match.getSets()) {
-       //     dto.getSets().add(Converter.convertToFront(userRole));
-      //  }
+        for (Set set : match.getSets()) {
+            dto.getSets().add(setConverter.convertToFront(set));
+        }
 
 
         return dto;

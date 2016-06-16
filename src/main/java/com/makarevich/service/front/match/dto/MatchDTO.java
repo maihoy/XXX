@@ -3,6 +3,7 @@ package com.makarevich.service.front.match.dto;
 import com.makarevich.dao.match.model.Set;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class MatchDTO {
     @NotNull
     private Date date;
 
-   // private Long sets;
+    private List<SetDTO> sets = new ArrayList<SetDTO>();
 
     private String myTeamName;
 
@@ -59,9 +60,13 @@ public class MatchDTO {
         this.date = date;
     }
 
-   // public List<Set> getSets() {       return this.sets;    }
+    public List<SetDTO> getSets() {
+        return sets;
+    }
 
-   // public void setSets(List<Set> sets) {        this.sets = sets;    }
+    public void setSets(List<SetDTO> sets) {
+        this.sets = sets;
+    }
 
     public String getMyTeamName() {
         return myTeamName;
