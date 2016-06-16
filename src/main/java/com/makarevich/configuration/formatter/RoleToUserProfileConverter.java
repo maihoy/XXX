@@ -10,27 +10,11 @@ import com.makarevich.service.front.userrole.UserRoleService;
 @Component
 public class RoleToUserProfileConverter implements Converter<UserRoleDTO, UserRoleDTO>{
 
-	@Autowired
-	private UserRoleService userRoleService;
+	//@Autowired
+	//private UserRoleService userRoleService;
 
 
-	public UserRoleDTO convert(UserRoleDTO element) {
-//		Long id = Long.parseLong((String)element);
-//		UserRoleDTO role= userRoleService.findById(id);
-//		System.out.println("Profile : "+role);
-		return element;
-	}
-	
-	/*
-	 * Gets UserRole by type
-	 */
-	/*
-	public UserRole convert(Object element) {
-		String type = (String)element;
-		UserRole profile= userProfileService.findByType(type);
-		System.out.println("Profile ... : "+profile);
-		return profile;
-	}
-	*/
+	public UserRoleDTO convert(UserRoleDTO element) {return element;	}
+
 
 }

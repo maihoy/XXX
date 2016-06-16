@@ -5,14 +5,19 @@ import com.makarevich.dao.match.model.Match;
 import com.makarevich.service.front.match.converter.MatchConverter;
 import com.makarevich.service.front.match.dto.MatchDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchServiceImpl {
+@Service("matchService")
+@Transactional
+public class MatchServiceImpl implements MatchService{
 
     @Autowired
     private MatchDao dao;
+
     @Autowired
     private MatchConverter matchConverter;
 

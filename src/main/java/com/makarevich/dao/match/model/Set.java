@@ -12,7 +12,7 @@ public class Set {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="rally")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="id", fetch = FetchType.LAZY)
     private List<Rally> rallies = new ArrayList<Rally>();
 
     public Long getId() {

@@ -27,7 +27,7 @@ public class Match {
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="set")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="id", fetch = FetchType.LAZY)
     private List<Set> sets = new ArrayList<Set>();
 
     public Long getId() {

@@ -1,6 +1,8 @@
 package com.makarevich.controller.match;
 
 import com.makarevich.controller.IndexController;
+import com.makarevich.service.front.match.MatchService;
+import com.makarevich.service.front.match.dto.MatchDTO;
 import com.makarevich.service.front.player.PlayerService;
 import com.makarevich.service.front.player.dto.PlayerDTO;
 import com.makarevich.service.front.team.TeamService;
@@ -18,14 +20,14 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/match")
+@RequestMapping("/match")
 public class MatchController extends IndexController {
 
         @Autowired
-        PlayerService playerService;
+        TeamService teamService;
 
         @Autowired
-        TeamService teamService;
+        MatchService matchService;
 
         @Autowired
         MessageSource messageSource;
@@ -34,16 +36,14 @@ public class MatchController extends IndexController {
     @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
     public String listPlayer(ModelMap model) {
 
-        List<TeamDTO> teams = teamService.findAllTeams();
-        model.addAttribute("teams", teams);
+        List<MatchDTO> matches = matchService.findAllMatches();
+        model.addAttribute("matches", matches);
         model.addAttribute("user",getPrincipal());
         return "match/manage";
     }
 
         @ModelAttribute("teams")
-        public List<TeamDTO> initializeProfiles(){
-            return teamService.findAllTeams();
-        }
+        public List<TeamDTO> initializeProfiles(){            return teamService.findAllTeams();        }
 
 
 }
