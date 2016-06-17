@@ -14,7 +14,7 @@ import java.util.List;
 @Service("matchService")
 @Transactional
 public class MatchServiceImpl implements MatchService{
-
+/*
     @Autowired
     private MatchDao dao;
 
@@ -56,5 +56,5 @@ public class MatchServiceImpl implements MatchService{
 
         return result;
     }
-
+*/
 }

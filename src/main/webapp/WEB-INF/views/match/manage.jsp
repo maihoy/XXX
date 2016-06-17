@@ -66,17 +66,36 @@
     <form:form method="POST" modelAttribute="match">
     <form:input type="hidden" path="id" id="id"/>
 
-
-
-
             <table class=" table">
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда: </label> </td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда принимающая: </label> </td>
                     <td class="col-sm-6"><form:select  path="myTeam" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
                 </tr>
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда: </label> </td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда гость: </label> </td>
                     <td class="col-sm-6"><form:select  path="theirTeam" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
+                </tr>
+                <tr>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="myScore">Счет команды принимающей: </label> </td>
+                    <td class="col-sm-6"><form:input cssClass="form-control" path="myScore" id="myScore"/></td>
+                    <td><form:errors path="myScore" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
+                </tr>
+                <tr>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="theirScore">Счет команды гостя: </label> </td>
+                    <td class="col-sm-6"><form:input cssClass="form-control" path="theirScore" id="theirScore"/></td>
+                    <td><form:errors path="theirScore" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <c:choose>
+                            <c:when test="${edit}">
+                                <input type="submit" class="btn btn-primary" value="Обновить"/>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="submit" class="btn btn-primary" value="Создать"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
                 </tr>
                 </table>
     </form:form>

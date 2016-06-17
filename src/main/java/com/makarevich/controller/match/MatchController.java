@@ -2,7 +2,9 @@ package com.makarevich.controller.match;
 
 import com.makarevich.controller.IndexController;
 import com.makarevich.service.front.match.MatchService;
+import com.makarevich.service.front.match.ScoreService;
 import com.makarevich.service.front.match.dto.MatchDTO;
+import com.makarevich.service.front.match.dto.ScoreDTO;
 import com.makarevich.service.front.player.PlayerService;
 import com.makarevich.service.front.player.dto.PlayerDTO;
 import com.makarevich.service.front.team.TeamService;
@@ -27,8 +29,8 @@ public class MatchController extends IndexController {
         @Autowired
         TeamService teamService;
 
-        @Autowired
-        MatchService matchService;
+    @Autowired
+    ScoreService scoreService;
 
         @Autowired
         MessageSource messageSource;
@@ -37,17 +39,16 @@ public class MatchController extends IndexController {
     @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
     public String listMatches(ModelMap model) {
 
-        List<MatchDTO> matches = matchService.findAllMatches();
-        model.addAttribute("matches", matches);
-        model.addAttribute("teams",teamService.findAllTeams());
+        List<ScoreDTO> scores = scoreService.findAllScores();
+        model.addAttribute("scores", scores);
         model.addAttribute("currentUser",getPrincipal());
         return "match/list";
     }
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.GET)
     public String newMatch(ModelMap model) {
-        MatchDTO match = new MatchDTO();
-        model.addAttribute("match", match);
+        ScoreDTO score = new ScoreDTO();
+        model.addAttribute("score", score);
         model.addAttribute("edit", false);
         model.addAttribute("currentUser",getPrincipal());
         return "match/manage";
@@ -55,7 +56,7 @@ public class MatchController extends IndexController {
 
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String saveMatch(@Valid @ModelAttribute("match") MatchDTO match, BindingResult result,
+    public String saveMatch(@Valid @ModelAttribute("match") ScoreDTO score, BindingResult result,
                            ModelMap model) {
 
         if (result.hasErrors()) {
@@ -63,7 +64,7 @@ public class MatchController extends IndexController {
         }
 
 
-        matchService.saveMatch(match);
+        scoreService.saveScore(score);
         return "redirect:/match/list";
     }
 
@@ -71,8 +72,8 @@ public class MatchController extends IndexController {
 
     @RequestMapping(value = { "/edit-{id}-match" }, method = RequestMethod.GET)
     public String editMatch(@PathVariable Long id, ModelMap model) {
-        MatchDTO match = matchService.findMatchById(id);
-        model.addAttribute("match", match);
+        ScoreDTO score = scoreService.findScoreById(id);
+        model.addAttribute("score", score);
         model.addAttribute("edit", true);
         model.addAttribute("currentUser",getPrincipal());
         return "match/manage";
@@ -80,7 +81,7 @@ public class MatchController extends IndexController {
 
 
     @RequestMapping(value = { "/edit-{id}-match" }, method = RequestMethod.POST)
-    public String updateMatch(@Valid @ModelAttribute("match") MatchDTO match, BindingResult result,
+    public String updateMatch(@Valid @ModelAttribute("match") ScoreDTO score, BindingResult result,
                              ModelMap model, @PathVariable Long id) {
 
         if (result.hasErrors()) {
@@ -88,20 +89,20 @@ public class MatchController extends IndexController {
         }
 
 
-        matchService.updateMatch(match);
+        scoreService.updateScore(score);
         return "redirect:/match/list";
     }
 
 
     @RequestMapping(value = { "/delete-{id}-match" }, method = RequestMethod.GET)
     public String deleteMatch(@PathVariable Long id) {
-        matchService.deleteMatchById(id);
+        scoreService.deleteScoreById(id);
         return "redirect:/match/list";
     }
 
 
     @ModelAttribute("teams")
-        public List<TeamDTO> initializeProfiles(){            return teamService.findAllTeams();        }
+        public List<TeamDTO> initializeProfiles(){   return teamService.findAllTeams(); }
 
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public interface MatchService {
-    MatchDTO findMatchById(Long id);
+   /* MatchDTO findMatchById(Long id);
 
     void saveMatch(MatchDTO match);
 
@@ -16,4 +16,5 @@ public interface MatchService {
     void deleteMatchById(Long id);
 
     List<MatchDTO> findAllMatches();
+    */
 }
