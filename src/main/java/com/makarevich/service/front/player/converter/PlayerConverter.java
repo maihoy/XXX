@@ -8,6 +8,8 @@ import com.makarevich.service.front.player.dto.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.Charset;
+
 @Component
 public class PlayerConverter implements Converter<Player, PlayerDTO> {
 
@@ -32,6 +34,7 @@ public class PlayerConverter implements Converter<Player, PlayerDTO> {
         player.setSurname(playerDTO.getSurname());
         player.setEmail(playerDTO.getEmail());
         player.setTeam(teamDao.findTeamById(playerDTO.getTeam()));
+
         return player;
     }
 }

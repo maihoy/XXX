@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=Windows-1251"
+<%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="Windows-1251"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
@@ -39,9 +39,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Матчи... <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                             <li><a href="<c:url value='/match/new' />">Создать</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Список матчей</a></li>
+    </sec:authorize>
+                            <li><a href="<c:url value='/match/list' />">Список матчей</a></li>
 
                         </ul>
                     </li>
@@ -96,7 +98,7 @@
         </table>
     </div>
     <br/>
-    <sec:authorize access="hasRole('USER')">
+    <sec:authorize access="hasRole('USER') or hasRole('ADMIN')">
     <input class="btn btn-primary" value="Добавить новую команду" onclick="location.href='new'" type="button" />
     </sec:authorize>
 </div>

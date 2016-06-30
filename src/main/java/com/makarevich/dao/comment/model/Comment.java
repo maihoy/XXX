@@ -16,7 +16,7 @@ public class Comment {
         private String text;
 
         @Column(name = "date", nullable = false)
-        private Date date;
+        private String date;
 
         @Column(name="creator", nullable=false)
         private Long creator;
@@ -38,11 +38,11 @@ public class Comment {
             this.text = text;
         }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -17,6 +17,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.servlet.Servlet;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.makarevich")
@@ -37,6 +39,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
 }
+
 
     @Override
     public void addFormatters(FormatterRegistry registry) {

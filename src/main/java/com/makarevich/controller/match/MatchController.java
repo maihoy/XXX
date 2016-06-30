@@ -56,7 +56,7 @@ public class MatchController extends IndexController {
 
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String saveMatch(@Valid @ModelAttribute("match") ScoreDTO score, BindingResult result,
+    public String saveMatch(@Valid @ModelAttribute("score") ScoreDTO score, BindingResult result,
                            ModelMap model) {
 
         if (result.hasErrors()) {
@@ -81,7 +81,7 @@ public class MatchController extends IndexController {
 
 
     @RequestMapping(value = { "/edit-{id}-match" }, method = RequestMethod.POST)
-    public String updateMatch(@Valid @ModelAttribute("match") ScoreDTO score, BindingResult result,
+    public String updateMatch(@Valid @ModelAttribute("score") ScoreDTO score, BindingResult result,
                              ModelMap model, @PathVariable Long id) {
 
         if (result.hasErrors()) {

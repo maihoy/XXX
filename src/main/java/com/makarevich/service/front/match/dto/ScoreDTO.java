@@ -4,9 +4,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * Created by j on 17.6.16.
- */
 public class ScoreDTO {
     private Long id;
 

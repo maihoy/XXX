@@ -31,13 +31,15 @@
                 <li><a href="<c:url value='/' />">Главная<span class="sr-only">(current)</span></a></li>
                 <li><a href="<c:url value='/team/list' />">Команды</a></li>
                 <li><a href="<c:url value='/player/list' />">Игроки</a></li>
-                <li><a href="<c:url value='/comment/list' />">Комментарии</a></li>
-                <li class="dropdown">
+                <li ><a href="<c:url value='/comment/list' />">Комментарии</a></li>
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Матчи...<span class="caret"></span></a>
                     <ul class="dropdown-menu">
+<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                         <li><a href="<c:url value='/match/new' />">Создать</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Список матчей</a></li>
+    </sec:authorize>
+                        <li><a href="<c:url value='/match/list' />">Список матчей</a></li>
 
                     </ul>
                 </li>
@@ -62,22 +64,24 @@
 
 
 <div class="container">
-<h2>Create Match</h2>
-    <form:form method="POST" modelAttribute="match">
+<h2>Создать матч</h2>
+    <form:form method="POST" modelAttribute="score">
     <form:input type="hidden" path="id" id="id"/>
 
             <table class=" table">
                 <tr>
                     <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда принимающая: </label> </td>
                     <td class="col-sm-6"><form:select  path="myTeam" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
+                <td></td>
                 </tr>
                 <tr>
                     <td style="line-height: 2" class="col-sm-2 control-label"><label for="team">Команда гость: </label> </td>
                     <td class="col-sm-6"><form:select  path="theirTeam" items="${teams}" multiple="false" itemValue="id" itemLabel="name" cssClass="form-control"  id="team" /></td>
+                <td></td>
                 </tr>
                 <tr>
-                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="myScore">Счет команды принимающей: </label> </td>
-                    <td class="col-sm-6"><form:input cssClass="form-control" path="myScore" id="myScore"/></td>
+                    <td style="line-height: 2" class="col-sm-2 control-label"><label for="myScore">Счет прин. команды: </label> </td>
+                    <td class="col-sm-6"><form:input cssClass="form-control" path="myScore" id="myScore" cssStyle="line-height:"/></td>
                     <td><form:errors path="myScore" cssStyle="line-height: 3" cssClass="label label-danger"/></td>
                 </tr>
                 <tr>

@@ -36,9 +36,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Матчи... <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                             <li><a href="<c:url value='/match/new' />">Создать</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Список матчей</a></li>
+    </sec:authorize>
+                            <li><a href="<c:url value='/match/list' />">Список матчей</a></li>
 
                         </ul>
                     </li>
@@ -71,7 +73,7 @@
                         <li class="clearfix">
                             <div class="post-comments">
                                 <p class="meta">${comment.date} <a href="#">${comment.creator}</a> написал : <i class="pull-right"><a href="#">
-                                    <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                                    <sec:authorize access="hasRole('ADMIN')">
                                     <small><a href="<c:url value='delete-${comment.id}-comment' />">Удалить</a></small>
                                     </sec:authorize>
                                 </a></i>

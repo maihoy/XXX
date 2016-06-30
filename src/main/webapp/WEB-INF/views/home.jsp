@@ -36,9 +36,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Матчи... <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<c:url value='/match/new' />">Создать</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Список матчей</a></li>
+                                        <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                                            <li><a href="<c:url value='/match/new' />">Создать</a></li>
+                                            <li role="separator" class="divider"></li>
+                                        </sec:authorize>
+
+                                        <li><a href="<c:url value='/match/list' />">Список матчей</a></li>
 
                                     </ul>
                                 </li>
@@ -77,29 +80,30 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <img class="img-responsive" src="http://www.360conditioning.com/images/thumbnails/thumbnail_140__PVB88S.jpg" alt="Generic placeholder image" height="140" width="140">
-                            <h2>Nullam id dolor</h2>
-                            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
-                                euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi
-                                leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-                                cursus magna.</p>
+                            <h2>Женская сборная. Гран-при. 2-й игровой уикенд. Группа «F1». 1-й тур. Россия – Голландия – 3:0</h2>
+                            <p>Россиянки (главный тренер – Юрий Маричев) одержали четвертую подряд победу со старта Гран-при.
+                                В Бари (Италия) 17 июня обыграна команда Голландии – 3:0. Мини-турнир группы «F1» проходит в Бари
+                                (Италия). С Голландией (наш соперник по победному финалу Евро-2015)
+                                уже встречались в первом игровом уикенде в Калининграде, тогда взяли верх в четырех сетах. </p>
 
                         </div><!-- /.col-lg-4 -->
                         <div class="col-lg-4">
                             <img class="img-responsive" src="http://cdn9.staztic.com/app/a/3318/3318172/tampa-united-volleyball-1-l-140x140.png" alt="Generic placeholder image" height="140" width="140">
-                            <h2>Cras mattis</h2>
-                            <p>Duis mollis, est non commodo luctus, nisi erat porttitor
-                                ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus
-                                sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor
-                                mauris condimentum nibh.</p>
+                            <h2>Мужская сборная. Мировая лига. 1-й игровой уикенд. Группа «С1» в Калининграде. Россия – Сербия – 0:3</h2>
+                            <p>Мужская сборная России (главный тренер – Владимир Алекно) начала свое участие в Мировой лиге 2016
+                                с поражения от Сербии – 0:3. Мини-турнир группы «С1» проходит в Калининграде.
+                            </p>
 
                         </div><!-- /.col-lg-4 -->
                         <div class="col-lg-4">
                             <img class="img-responsive" src="http://images.maxpreps.com.edgesuite.net/TeamPhoto/mmFzbidHCE2MZGUWxOpemw/yT0eCj5bR06JWe55POgb8A/3,140/1415191089_cobras_contreras_girls_varsity_volleyball_fall_14-15.jpg" alt="Generic placeholder image" height="140" width="140">
-                            <h2> Vestibulum id ligula</h2>
-                            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-                                in, egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-                                Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                                ut fermentum massa justo sit amet risus.</p>
+                            <h2>Лига чемпионов. Казанский «Зенит» - четырехкратный обладатель трофея!
+                            </h2>
+                            <p>
+                                Казанский «Зенит» в финале мужской Лиги чемпионов на «Таурон Арене» в Кракове (Польша)
+                                одержал волевую победу над итальянским клубом «Тренто», отбившись со счета 0:2 – итоговый результат
+                                3:2. «Зенит» отстоял звание лучшей команды Лиги чемпионов и получил его в четвертый раз (рекорд
+                                турнира). Представители России уже пять лет бессменно владеют главным континентальным трофеем!</p>
 
                         </div><!-- /.col-lg-4 -->
                     </div><!-- /.row -->
@@ -111,11 +115,13 @@
 
                     <div class="row featurette">
                         <div class="col-md-7">
-                            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor
-                                fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-                                commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                                tellus ac cursus commodo.</p>
+                            <h2 class="featurette-heading">В финальном матче Кубка России – 2014 среди мужских команд памяти Константина Ревы казанский «Зенит» переиграл новосибирский «Локомотив» со счетом <span class="text-muted">3:0 (25:20, 25:19, 25:22).</span></h2>
+                            <p class="lead">Владимир Алекно, главный тренер «Зенита»:<br>
+                                Этот титул, этот турнир «Зенит» не выигрывал давно. Особенно приятна эта победа в канун Нового Года. Рад, что команда
+                                выдержала. Рад за связующего Игоря Кобзаря, что он доказал свой уровень, свой профессионализм. Хорошо поработали здесь.
+                                Полетела подача. А как вы знаете, подача это результат душевного состояния. Когда внутри спокойно, и я попытался создать
+                                такие условия команде. Больше я работал над собой, что бы не срываться, не кричать. Когда спокоен тренер – спокойна команда.
+.</p>
                         </div>
                         <div class="col-md-5">
                             <img data-holder-rendered="true" src="https://s-media-cache-ak0.pinimg.com/736x/33/f6/a7/33f6a713de20f9bcf75c197cedffc635.jpg" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500">
@@ -126,11 +132,15 @@
 
                     <div class="row featurette">
                         <div class="col-md-7 col-md-push-5">
-                            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor
-                                fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-                                commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                                tellus ac cursus commodo.</p>
+                            <h2 class="featurette-heading">"Омичка" (Омская область) - "Ярославна-ТМЗ" -  <span class="text-muted">3:0 (25:22,25:23,25:16)</span></h2>
+                            <p class="lead">
+
+                                Между командами из Омской и Ярославской областей пропасть в две лиги.
+                                Ничего сверхестественного от подопечных Владимира Пилипенко ждать не приходилось после того,
+                                как команда отказалась от перехода в Высшую лигу "А". Тем не менее в двух первых партиях тутаевские
+                                девушки не давали расслабиться более именитым соперницам. Однако запас в мастерстве у омичек таков,
+                                что выигрывать они обязаны, что сделали. В третьем сете уже борьба была формальной - 25:16 и,
+                                соответственно, 3:0 - победа "Омички". </p>
                         </div>
                         <div class="col-md-5 col-md-pull-7">
                             <img data-holder-rendered="true" src="http://www.improveyourvolley.com/images/volleyballgirlpassingtheballtothesetterphotobychar1iej1.jpg" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500">
@@ -141,11 +151,12 @@
 
                     <div class="row featurette">
                         <div class="col-md-7">
-                            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                            <p class="lead">Donec ullamcorper nulla non metus auctor
-                                fringilla. Vestibulum id ligula porta felis euismod semper. Praesent
-                                commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                                tellus ac cursus commodo.</p>
+                            <h2 class="featurette-heading">Кубок молодежной лиги у <span class="text-muted">«Уралочки-НТМК»</span></h2>
+                            <p class="lead">Новый и первый трофей в женской молодежной лиги у «Уралочки-НТМК»!
+                                В финальном матче «уралочки» вырвали победу у «Динамо-Академия-УОР» из Казани со счетом 3:2 (14:25; 23:25; 25:23; 25:13; 15:6) Первые два сеты «динамовки» уверенно шли впереди и выигрывали концовки партий, но в переломном третьем сете «уралочки» проявили характер, и выиграли финальный интересный матч турнира!
+
+                                Третье место у саратовского «Протона», который обыграл команду
+                                «Подмосковье»  со счетом 3:1 (24:14; 20:25; 25:10; 25:14)</p>
                         </div>
                         <div class="col-md-5">
                             <img data-holder-rendered="true" src="http://www.evovball.com/wp-content/uploads/2015/10/10384914_1564651700480761_3930099888588517135_n2-500x500.jpg" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="500x500">

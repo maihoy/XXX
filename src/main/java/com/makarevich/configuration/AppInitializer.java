@@ -1,9 +1,18 @@
 package com.makarevich.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import javax.servlet.Filter;
+
 
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new Encoder()};
+    }
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[] { AppConfig.class };
@@ -18,5 +27,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
+
+
 
 }

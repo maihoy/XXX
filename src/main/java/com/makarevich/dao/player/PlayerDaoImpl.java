@@ -14,6 +14,7 @@ import java.util.List;
 public class PlayerDaoImpl extends AbstractDao<Long, Player> implements PlayerDao {
 
     public void savePlayer(Player player) {
+
         persist(player);
     }
 

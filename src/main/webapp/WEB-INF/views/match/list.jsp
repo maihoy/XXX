@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
-    <title>Список игроков</title>
+    <title>Список Матчей</title>
     <style>
         .navbar-form{
             padding-top: 2px;
@@ -34,14 +34,16 @@
                 <ul class="nav navbar-nav">
                     <li><a href="<c:url value='/' />">Главная<span class="sr-only">(current)</span></a></li>
                     <li ><a href="<c:url value='/team/list' />">Команды</a></li>
-                    <li class="active"><a href="<c:url value='/player/list' />">Игроки</a></li>
+                    <li><a href="<c:url value='/player/list' />">Игроки</a></li>
                     <li><a href="<c:url value='/comment/list' />">Комментарии</a></li>
-                    <li class="dropdown">
+                    <li class="active" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Матчи... <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                             <li><a href="<c:url value='/match/new' />">Создать</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Список матчей</a></li>
+                                </sec:authorize>
+                            <li><a href="<c:url value='/match/list' />">Список матчей</a></li>
 
                         </ul>
                     </li>
@@ -69,26 +71,26 @@
         </div>
     </nav>
 
-    <h2>Список Игроков</h2>
+    <h2>Список Матчей</h2>
     <div class="table-responsive">
         <table class="table table-hover filtered sortable" id="sortabletable">
             <thead>
             <tr>
-                <th>Принимающая команда</th><th>Счет</th><th>Команда гость</th>
+                <th>Принимающая команда</th><th class="unsortable">Счет</th><th>Команда гость</th>
                 <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
                     <th class="unsortable"></th><th  class="unsortable"></th>
                 </sec:authorize>
             </tr>
             </thead>
-            <c:forEach items="${match}" var="match">
+            <c:forEach items="${scores}" var="score">
                 <tr>
-                    <td>${match.myTeam}</td>
-                    <td>${match.myScore}:${match.theirScore}</td>
-                    <td>${match.theirTeam}</td>
+                    <td>${score.myTeamName}</td>
+                    <td>${score.myScore}:${score.theirScore}</td>
+                    <td>${score.theirTeamName}</td>
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
 
-                        <td><input class="btn btn-warning btn-xs" value="Изменить" onclick="location.href='edit-${match.id}-player'" type="button" /></td>
-                        <td><input class="btn btn-danger btn-xs" value="Удалить" onclick="location.href='delete-${match.id}-player'" type="button" /></td>
+                        <td><input class="btn btn-warning btn-xs" value="Изменить" onclick="location.href='edit-${score.id}-match'" type="button" /></td>
+                        <td><input class="btn btn-danger btn-xs" value="Удалить" onclick="location.href='delete-${score.id}-match'" type="button" /></td>
 
                     </sec:authorize>
                 </tr>
@@ -98,7 +100,7 @@
     </div>
     <br/>
     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-        <input class="btn btn-primary" value="Добавить нового игрока" onclick="location.href='new'" type="button" />
+        <input class="btn btn-primary" value="Добавить новый матч" onclick="location.href='new'" type="button" />
     </sec:authorize>
 </div>
 

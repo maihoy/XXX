@@ -1,14 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=Windows-1251"
-         pageEncoding="Windows-1251"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<c:url value='/static/css/reset.css' />" rel="stylesheet">
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet">
-    <title>Список пользователей</title>
+    <title>РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</title>
     <style>
         .navbar-form{
             padding-top: 2px;
@@ -32,21 +32,23 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="<c:url value='/' />">Главная<span class="sr-only">(current)</span></a></li>
-                    <li ><a href="<c:url value='/team/list' />">Команды</a></li>
-                    <li ><a href="<c:url value='/player/list' />">Игроки</a></li>
-                    <li><a href="<c:url value='/comment/list' />">Комментарии</a></li>
+                    <li><a href="<c:url value='/' />">Р“Р»Р°РІРЅР°СЏ<span class="sr-only">(current)</span></a></li>
+                    <li ><a href="<c:url value='/team/list' />">РљРѕРјР°РЅРґС‹</a></li>
+                    <li ><a href="<c:url value='/player/list' />">РРіСЂРѕРєРё</a></li>
+                    <li><a href="<c:url value='/comment/list' />">РљРѕРјРјРµРЅС‚Р°СЂРёРё</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Матчи... <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">РњР°С‚С‡Рё... <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<c:url value='/match/new' />">Создать</a></li>
+                            <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
+                            <li><a href="<c:url value='/match/new' />">РЎРѕР·РґР°С‚СЊ</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Список матчей</a></li>
+                                </sec:authorize>
+                            <li><a href="<c:url value='/match/list' />">РЎРїРёСЃРѕРє РјР°С‚С‡РµР№</a></li>
 
                         </ul>
                     </li>
                     <sec:authorize access="hasRole('ADMIN')">
-                        <li class="active"><a href="<c:url value='/user/list' />">Список пользователей</a></li>
+                        <li class="active"><a href="<c:url value='/user/list' />">РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a></li>
                     </sec:authorize>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
@@ -59,22 +61,22 @@
                         <li><p class="navbar-text"> ${currentUser}</p></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-                        <li><a href="<c:url value='/logout' />">Выход</a></li>
+                        <li><a href="<c:url value='/logout' />">Р’С‹С…РѕРґ</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAnonymous()">
-                        <li><a href="<c:url value='/login'/>">Вход </a> </li>
+                        <li><a href="<c:url value='/login'/>">Р’С…РѕРґ </a> </li>
                     </sec:authorize>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <h2>List of Players</h2>
+    <h2>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</h2>
     <div class="table-responsive">
         <table class="table table-hover filtered sortable" id="sortabletable">
             <thead>
             <tr>
-                <th>Имя</th><th>Фамилия</th><th>Эл. адрес</th><th>Статус</th><th  class="unsortable"></th><th  class="unsortable"></th>
+                <th>РРјСЏ</th><th>Р¤Р°РјРёР»РёСЏ</th><th>Р­Р». Р°РґСЂРµСЃ</th><th>РЎС‚Р°С‚СѓСЃ</th><th  class="unsortable"></th><th  class="unsortable"></th>
             </tr>
             </thead>
             <tbody>
@@ -84,15 +86,15 @@
                     <td>${user.lastName}</td>
                     <td>${user.email}</td>
                     <td>${user.state}</td>
-                    <td><input class="btn btn-warning btn-xs" value="Изменить" onclick="location.href='edit-${user.id}-user'" type="button" /></td>
-                    <td><input class="btn btn-danger btn-xs" value="Удалить" onclick="location.href='delete-${user.id}-user'" type="button" /></td>
+                    <td><input class="btn btn-warning btn-xs" value="РР·РјРµРЅРёС‚СЊ" onclick="location.href='edit-${user.id}-user'" type="button" /></td>
+                    <td><input class="btn btn-danger btn-xs" value="РЈРґР°Р»РёС‚СЊ" onclick="location.href='delete-${user.id}-user'" type="button" /></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
     <br/>
-    <input class="btn btn-primary" value="Добавить нового Пользователя" onclick="location.href='new'" type="button" />
+    <input class="btn btn-primary" value="Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІРѕРіРѕ РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ" onclick="location.href='new'" type="button" />
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

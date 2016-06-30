@@ -5,6 +5,9 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 public class PlayerDTO {
 
@@ -31,19 +34,21 @@ public class PlayerDTO {
     }
 
     public Long getId() {
-        return id;
+        return id ;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
+    public String getName()  {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+
+        this.name = name ;
+
     }
 
     public String getEmail (){return email;}
